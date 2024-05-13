@@ -1,3 +1,6 @@
+import com.android.build.api.dsl.ApplicationDefaultConfig
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -15,6 +18,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        setLocalProperties()
     }
 
     buildTypes {
@@ -33,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -45,4 +53,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+fun ApplicationDefaultConfig.setLocalProperties() {
+    // LocalProperties data load
+    val localProperties = gradleLocalProperties(rootDir, providers)
+    val youtubeApiKey: String = localProperties.getProperty("youtube.api.key")
+    buildConfigField("String", "YOUTUBE_API_KEY", youtubeApiKey)
 }
