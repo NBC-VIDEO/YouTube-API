@@ -49,11 +49,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
 
-fun ApplicationDefaultConfig.setLocalProperties() {
-    // LocalProperties data load
-    val localProperties = gradleLocalProperties(rootDir, providers)
-    val youtubeApiKey: String = localProperties.getProperty("youtube.api.key")
-    buildConfigField("String", "YOUTUBE_API_KEY", youtubeApiKey)
+    // network
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp3.logging.interceptor)
+
+    // test
+    testImplementation(libs.kotlinx.coroutines.test)
 }
