@@ -54,6 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
 }
 
 fun ApplicationDefaultConfig.setLocalProperties() {
