@@ -36,13 +36,13 @@ class VideoDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // param1로 서버에 요청 보내기 initData()
+        // param1로 서버에 요청 보내기
 
         initRecyclerview()
         initData()
 
         binding.btnDetailGood.setOnClickListener {
-            // isLiked = true 로 변경
+            // isLiked = true 로 변경 & 내부에 저장
         }
     }
 
@@ -65,13 +65,19 @@ class VideoDetailFragment : Fragment() {
                 .load(userDetailData.items.snippet.thumbnails.default.url)
                 .into(ivDetailThumbnail)
             tvDetailTitle.text = userDetailData.items.snippet.title
-            tvDetailViewCount.text = userDetailData.items.statistics.viewCount.toString()
+            tvDetailViewCount.text = Decimal(userDetailData.items.statistics.viewCount)
             tvDetailPublish.text = userDetailData.items.snippet.publishedAt
             tvDetailChannelName.text = userDetailData.items.snippet.channelTitle
             tvDetailChannelId.text = userDetailData.items.snippet.channelId
             // channel thumbnail이 없다???????
         }
     }
+
+    // 좋아요 표시
+    private fun likeVideo() {}
+
+    // 공유 기능
+    private fun shareVideo() {}
 
     companion object {
         @JvmStatic
