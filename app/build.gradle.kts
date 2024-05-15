@@ -60,4 +60,7 @@ dependencies {
 
     // UI
     implementation(libs.circleimageview)
+
+    // Glide
+    implementation(libs.glide)
 }
