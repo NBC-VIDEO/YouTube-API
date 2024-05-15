@@ -2,7 +2,11 @@ package com.nbc.video.network.di
 
 import com.nbc.video.BuildConfig
 import com.nbc.video.network.BASE_URL
+import com.nbc.video.network.CategoriesRemoteDataSource
+import com.nbc.video.network.ChannelRemoteDataSource
 import com.nbc.video.network.NetworkDataSource
+import com.nbc.video.network.SearchRemoteDataSource
+import com.nbc.video.network.VideoRemoteDataSource
 import com.nbc.video.network.retrofit.NetworkApi
 import com.nbc.video.network.retrofit.RetrofitService
 import okhttp3.Call
@@ -34,6 +38,22 @@ class NetworkContainer {
     private val networkApi = retrofit.create(NetworkApi::class.java)
 
     fun bindNetworkDataSource(): NetworkDataSource {
+        return RetrofitService(networkApi)
+    }
+
+    fun bindVideoRemoteDataSource(): VideoRemoteDataSource {
+        return RetrofitService(networkApi)
+    }
+
+    fun bindSearchRemoteDataSource(): SearchRemoteDataSource {
+        return RetrofitService(networkApi)
+    }
+
+    fun bindCategoriesRemoteDataSource(): CategoriesRemoteDataSource {
+        return RetrofitService(networkApi)
+    }
+
+    fun bindChannelRemoteDataSource(): ChannelRemoteDataSource {
         return RetrofitService(networkApi)
     }
 }
