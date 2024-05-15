@@ -1,6 +1,5 @@
 package com.nbc.video.network.retrofit
 
-import com.nbc.video.network.BASE_URL
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.ChannelResponse
 import com.nbc.video.network.model.SearchResponse
@@ -26,23 +25,10 @@ import com.nbc.video.network.model.search.enums.toRequestBody
 import com.nbc.video.network.model.video.enums.NetworkVideoChart
 import com.nbc.video.network.model.video.enums.NetworkVideoPart
 import com.nbc.video.network.model.video.enums.toRequestBody
-import okhttp3.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 internal class RetrofitService(
-    callFactory: Call.Factory,
+    private val networkApi: NetworkApi,
 ) : NetworkDataSource {
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .callFactory(callFactory)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val networkApi: NetworkApi = retrofit.create()
-
     override suspend fun getVideos(
         parts: List<NetworkVideoPart>,
         chart: NetworkVideoChart,
