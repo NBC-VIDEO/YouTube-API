@@ -2,6 +2,7 @@ package com.nbc.video
 
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.di.NetworkContainer
+import com.nbc.video.network.model.search.enums.NetworkSearchVideoCaption
 import com.nbc.video.network.model.video.enums.NetworkVideoChart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -27,9 +28,18 @@ class NetworkUnitTest {
     }
 
     @Test
+    fun `Youtube API 아이디로 비디오 검색`() = runTest {
+        val response = networkDataSource.getVideos(
+            id = "1l7GnhW7TXY"
+        )
+        printPrettyJson(response)
+    }
+
+    @Test
     fun `Youtube API 카테고리 선택 후 비디오 리스트 가져오기`() = runTest {
         val response = networkDataSource.getVideos(
-             videoCategoryId = "17" // 카테고리 선택
+            chart = NetworkVideoChart.MOST_POPULAR,
+             videoCategoryId = "17" // 카테고리 선택,
         )
         printPrettyJson(response)
     }
@@ -45,7 +55,7 @@ class NetworkUnitTest {
     @Test
     fun `Youtube API 아이디별 비디오 카테고리 리스트 가져오기`() = runTest {
         val response = networkDataSource.getVideoIdCategories(
-            id = "23"
+            id = "38"
         )
         printPrettyJson(response)
     }
