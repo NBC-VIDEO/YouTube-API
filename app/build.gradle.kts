@@ -50,11 +50,21 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+
     // network
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.logging.interceptor)
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    // Gson 컨버터, Retrofit과 함께 JSON 처리를 위해 사용
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     // test
     testImplementation(libs.kotlinx.coroutines.test)
+
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
 }
