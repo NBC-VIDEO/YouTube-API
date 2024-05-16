@@ -57,4 +57,10 @@ dependencies {
 
     // test
     testImplementation(libs.kotlinx.coroutines.test)
+
+    // UI
+    implementation(libs.circleimageview)
+
+    // Glide
+    implementation(libs.glide)
 }
