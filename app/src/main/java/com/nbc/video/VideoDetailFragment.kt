@@ -2,11 +2,11 @@ package com.nbc.video
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.nbc.video.databinding.FragmentVideoDetailBinding
@@ -18,7 +18,7 @@ class VideoDetailFragment : Fragment() {
     private lateinit var _binding: FragmentVideoDetailBinding
     private val binding get() = _binding
     private val userDetailData = DetailDummyData.user
-    private lateinit var viewModel: VideoDetailViewModel
+    private val viewModel: VideoDetailViewModel by viewModels { VideoDetailViewModel.viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +39,6 @@ class VideoDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // param1로 서버에 요청 보내기
-
-        viewModel = ViewModelProvider(this)[VideoDetailViewModel::class.java]
 
         initRecyclerview()
         initData()
