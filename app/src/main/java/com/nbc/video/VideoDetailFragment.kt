@@ -86,9 +86,6 @@ class VideoDetailFragment : Fragment() {
     }
 
     // 좋아요 표시 & Entity 추가 비동기 함수
-    // globalscope -> lifecyclescope
-    // viewmodel 사용하기
-
     private fun switchIsLiked(channelId: String) {
         var video = viewModel.getAllVideos().value?.firstOrNull { it.channelId == channelId }
         if (video == null) {
