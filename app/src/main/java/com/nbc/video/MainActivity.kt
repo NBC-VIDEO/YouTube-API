@@ -1,7 +1,6 @@
 package com.nbc.video
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,16 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.btn.setOnClickListener {
             setFragment(homeFragment)
         }
-        // 메인 함수에서 싱글톤 객체의 데이터 접근 및 출력
-        /* println("Items:")
-        DummyData.homeData.item.forEach { item ->
-            println(" - Title: ${item.title}, Thumbnail URL: ${item.thumbnailUrl}")
-        }
 
-        println("\nCategories:")
-        DummyData.homeData.category.forEach { category ->
-            println(" - Name: ${category.name}")
-        }*/
 
     }
 
