@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.nbc.video.databinding.FragmentVideoDetailBinding
@@ -17,6 +18,7 @@ class VideoDetailFragment : Fragment() {
     private lateinit var _binding: FragmentVideoDetailBinding
     private val binding get() = _binding
     private val userDetailData = DetailDummyData.user
+    private lateinit var viewModel: VideoDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +40,23 @@ class VideoDetailFragment : Fragment() {
 
         // param1로 서버에 요청 보내기
 
+        viewModel = ViewModelProvider(this)[VideoDetailViewModel::class.java]
+
         initRecyclerview()
         initData()
 
         binding.btnDetailGood.setOnClickListener {
             // isLiked = true 로 변경 & 내부에 저장
+            val newVideo = videoDetailEntity(
+                id = userDetailData.items.id,
+                channelId = userDetailData.items.snippet.channelId
+            )
+            viewModel.insertVideo(newVideo)
+            switchIsLiked(newVideo.channelId)
+        }
+
+        viewModel.getAllVideos().observe(viewLifecycleOwner) {
+            // 데이터 변경시 처리
         }
     }
 
@@ -73,8 +87,30 @@ class VideoDetailFragment : Fragment() {
         }
     }
 
-    // 좋아요 표시
-    private fun likeVideo() {}
+    // 좋아요 표시 & Entity 추가 비동기 함수
+    // globalscope -> lifecyclescope
+    // viewmodel 사용하기
+
+    private fun switchIsLiked(channelId: String) {
+        var video = viewModel.getAllVideos().value?.firstOrNull { it.channelId == channelId }
+        if (video == null) {
+            video = videoDetailEntity(
+                id = userDetailData.items.id,
+                channelId = channelId,
+                isLiked = true
+            )
+            viewModel.insertVideo(video)
+        } else {
+            val isLikedBefore = video.isLiked
+            video.isLiked = !video.isLiked
+            viewModel.updateIsLiked(video)
+
+            // isLiked 가 true -> false 될 때
+            if (isLikedBefore && !video.isLiked) {
+                viewModel.deleteVideo(video)
+            }
+        }
+    }
 
     // 공유 기능
     private fun shareVideo() {}
