@@ -1,16 +1,23 @@
-package com.nbc.video.main
+package com.nbc.video.presenters.search
 
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nbc.video.adapter.SearchAdapter
+import com.nbc.video.AppApplication
 import com.nbc.video.databinding.FragmentSearchBinding
+import com.nbc.video.network.NetworkDataSource
+import com.nbc.video.network.model.search.enums.NetworkSearchType
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null

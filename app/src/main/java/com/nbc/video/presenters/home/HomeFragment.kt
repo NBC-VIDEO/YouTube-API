@@ -1,15 +1,13 @@
-package com.nbc.video
+package com.nbc.video.presenters.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nbc.video.data.DummyData
+import com.nbc.video.presenters.home.data.HomeDummyData
 import com.nbc.video.databinding.FragmentHomeBinding
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.video.enums.NetworkVideoChart
@@ -38,16 +36,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //popular
-        binding.rlPopular.adapter = HomeAdapter(DummyData.getDummyPopularVideos())
+        binding.rlPopular.adapter = HomeAdapter(HomeDummyData.getDummyPopularVideos())
         binding.rlPopular.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         //category
-        binding.rlCategory.adapter = HomeAdapter(DummyData.getDummyCategoryVideos())
+        binding.rlCategory.adapter = HomeAdapter(HomeDummyData.getDummyCategoryVideos())
         binding.rlCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         //channel
-        binding.rlChannel.adapter = HomeAdapter(DummyData.getDummyChannelVideos())
+        binding.rlChannel.adapter = HomeAdapter(HomeDummyData.getDummyChannelVideos())
         binding.rlChannel.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 

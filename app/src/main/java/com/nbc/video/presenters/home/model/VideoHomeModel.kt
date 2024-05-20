@@ -1,4 +1,4 @@
-package com.nbc.video.data
+package com.nbc.video.presenters.home.model
 
 data class VideoHomeModel(
     val popularVideo: List<PopularVideo>,
