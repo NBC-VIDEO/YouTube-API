@@ -26,7 +26,7 @@ data class SearchResponse(
         @SerializedName("liveBroadcastContent") val liveBroadcastContent: String,
     ) {
         data class Thumbnail(
-            @SerializedName("name") val url: String,
+            @SerializedName("url") val url: String,
             @SerializedName("width") val width: Int,
             @SerializedName("height") val height: Int,
         )
