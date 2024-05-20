@@ -42,15 +42,10 @@ android {
 
 dependencies {
 
+    // core
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation(libs.androidx.fragment.ktx)
 
     // Room
     val room_version = "2.6.1"
@@ -66,10 +61,16 @@ dependencies {
 
     // test
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
     // UI
+    implementation(libs.androidx.appcompat)
     implementation(libs.circleimageview)
-
-    // Glide
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.glide)
+    implementation(libs.material)
+
+    implementation("com.github.skydoves:powerspinner:1.2.6")
 }

@@ -238,5 +238,4 @@ internal class RetrofitService(
             pageToken = pageToken
         )
     }
-
 }
