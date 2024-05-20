@@ -61,7 +61,7 @@ class NetworkUnitTest {
     @Test
     fun `Youtube API 카테고리 채널 목록 가져오기`() = runTest {
         val response = networkDataSource.getVideoIdChannel(
-            id = "UCGVPdYKdBMXRs3W0GTen3lA"
+            id = "UC4-CH0epzZpD_ARhxCx6LaQ"
         )
         printPrettyJson(response)
     }
