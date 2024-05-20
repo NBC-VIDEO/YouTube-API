@@ -5,8 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.nbc.video.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,19 +24,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btn.setOnClickListener {
-            setFragment(homeFragment)
-        }
-
 
     }
 
-    private fun setFragment(frag: Fragment) {
-        supportFragmentManager.commit {
-            replace(R.id.frame, frag)
-            setReorderingAllowed(true)
-            addToBackStack(null)
-        }
 
-    }
 }
