@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#F4E7CC"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoDetailFragment">
@@ -82,23 +81,25 @@
                 android:id="@+id/btn_detail_good"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:layout_constraintEnd_toStartOf="@id/btn_detail_share"
-                app:layout_constraintTop_toTopOf="@id/tv_detail_view_count"
-                app:layout_constraintBottom_toBottomOf="@id/tv_detail_publish"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/good"
-                android:contentDescription="@string/app_name" />
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="@id/tv_detail_publish"
+                app:layout_constraintEnd_toStartOf="@id/btn_detail_share"
+                app:layout_constraintTop_toTopOf="@id/tv_detail_view_count"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_detail_share"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_detail_view_count"
-                app:layout_constraintBottom_toBottomOf="@id/tv_detail_publish"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/share"
-                android:contentDescription="@string/app_name" />
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="@id/tv_detail_publish"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_detail_view_count"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_recyclerview"

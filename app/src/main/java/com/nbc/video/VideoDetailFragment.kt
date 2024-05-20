@@ -81,7 +81,9 @@ class VideoDetailFragment : Fragment() {
             tvDetailPublish.text = userDetailData.items.snippet.publishedAt
             tvDetailChannelName.text = userDetailData.items.snippet.channelTitle
             tvDetailChannelId.text = userDetailData.items.snippet.channelId
-            // channel thumbnail이 없다???????
+            Glide.with(requireContext())
+                .load(userDetailData.items.channelSnippet.thumbnails.default.url)
+                .into(ivDetailChannelImage)
         }
     }
 

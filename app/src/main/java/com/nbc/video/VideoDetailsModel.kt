@@ -8,6 +8,7 @@ data class VideoDetails(
     val id: String,                                 // 동영상 고유 ID
     val snippet: VideoSnippetModel,
     val statistics: StatisticsModel,
+    val channelSnippet: ChannelSnippetModel,
 )
 
 data class VideoSnippetModel(
@@ -34,4 +35,8 @@ data class ThumbnailModel(
 
 data class StatisticsModel(
     val viewCount: Int,                     // 조회수
+)
+
+data class ChannelSnippetModel(
+    val thumbnails: ThumbnailsModel,        // 채널 썸네일
 )

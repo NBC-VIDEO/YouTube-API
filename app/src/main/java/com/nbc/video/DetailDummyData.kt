@@ -25,11 +25,15 @@ object DetailDummyData {
             tags = listOf("All", "Music"),
             categoryId = 1,
         )
+        val channelSnippet = ChannelSnippetModel(
+            thumbnails = ThumbnailsModel(thumbnail)
+        )
         val userStatistics = StatisticsModel(60883)
         val videoDetails = VideoDetails(
             id = "9bZkp7q19f0",
             snippet = userSnippet,
-            statistics = userStatistics
+            statistics = userStatistics,
+            channelSnippet = channelSnippet,
         )
         val user = VideoDetailsModel(
             items = videoDetails
