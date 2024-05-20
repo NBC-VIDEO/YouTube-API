@@ -10,7 +10,7 @@ import com.nbc.video.network.model.YouTubeResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-internal interface NetworkApi {
+interface NetworkApi {
 
     // https://developers.google.com/youtube/v3/docs/videos/list?hl=ko&apix_params=%7B%22part%22%3A%5B%22snippet%22%5D%2C%22chart%22%3A%22mostPopular%22%7D#request
 
