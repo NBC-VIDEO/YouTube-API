@@ -66,5 +66,8 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
 
     //glide
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    //glide - radius
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+
 }
