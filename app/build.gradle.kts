@@ -44,18 +44,9 @@ dependencies {
 
     // core
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-    implementation("com.github.skydoves:powerspinner:1.2.6")
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
-    implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.fragment.ktx)
+<<<<<<< HEAD
 
     // Room
     val room_version = "2.6.1"
@@ -63,6 +54,8 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
+=======
+>>>>>>> a4ece4d74736c3fea663e9e9b9cc3d42c6e2e3db
 
     // network
     implementation(libs.retrofit.core)
@@ -79,11 +72,16 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.circleimageview)
     implementation(libs.androidx.constraintlayout)
+<<<<<<< HEAD
     implementation(libs.material)
     
     //glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+=======
+    implementation(libs.glide)
+    implementation(libs.material)
+>>>>>>> a4ece4d74736c3fea663e9e9b9cc3d42c6e2e3db
 
     implementation("com.github.skydoves:powerspinner:1.2.6")
 }
