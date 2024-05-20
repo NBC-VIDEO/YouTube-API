@@ -27,13 +27,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2018/10/01/09/21/pets-3715733_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Popular Video 1", id = 10
+                title = "Popular Video 1"
             ),
             PopularVideo(
                 thumbnails = Thumbnail(
@@ -47,13 +47,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Popular Video 2", id = 10
+                title = "Popular Video 2"
             ),
             PopularVideo(
                 thumbnails = Thumbnail(
@@ -67,13 +67,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Popular Video 3", id = 10
+                title = "Popular Video 3"
             ),
             PopularVideo(
                 thumbnails = Thumbnail(
@@ -87,13 +87,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Popular Video 4", id = 10
+                title = "Popular Video 4"
             )
         )
     }
@@ -112,13 +112,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Category Video 1", id = 10
+                title = "Category Video 1", categoryId = ""
             ),
             CategoryVideo(
                 thumbnails = Thumbnail(
@@ -132,13 +132,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Category Video 2", id = 10
+                title = "Category Video 2", categoryId = ""
             ),
             CategoryVideo(
                 thumbnails = Thumbnail(
@@ -152,13 +152,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Category Video 3", id = 10
+                title = "Category Video 3", categoryId = ""
             ),
             CategoryVideo(
                 thumbnails = Thumbnail(
@@ -172,13 +172,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Category Video 4", id = 10
+                title = "Category Video 4", categoryId = ""
             )
         )
     }
@@ -197,13 +197,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Channel Video 1", id = 10
+                title = "Channel Video 1",""
             ),
             ChannelVideo(
                 thumbnails = Thumbnail(
@@ -217,13 +217,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Channel Video 2", id = 10
+                title = "Channel Video 2", ""
             ),
             ChannelVideo(
                 thumbnails = Thumbnail(
@@ -237,13 +237,13 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Channel Video 3", id = 10
+                title = "Channel Video 3", ""
             ),
             ChannelVideo(
                 thumbnails = Thumbnail(
@@ -257,22 +257,15 @@ object HomeDummyData {
                         320,
                         180
                     ),
-                    heigh = Image(
+                    height = Image(
                         "https://cdn.pixabay.com/photo/2016/09/05/21/37/cat-1647775_1280.jpg",
                         480,
                         360
                     )
                 ),
-                title = "Channel Video 4", id = 10
+                title = "Channel Video 4", ""
             )
         )
     }
 
-    fun getDummyVideoHomeModel(): VideoHomeModel {
-        return VideoHomeModel(
-            popularVideo = getDummyPopularVideos(),
-            categoryVideo = getDummyCategoryVideos(),
-            channelVideo = getDummyChannelVideos()
-        )
-    }
 }
