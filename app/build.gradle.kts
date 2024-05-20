@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,33 +42,38 @@ android {
 
 dependencies {
 
+    // core
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.fragment.ktx)
 
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
-
+    // Room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     // network
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.logging.interceptor)
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    // Gson 컨버터, Retrofit과 함께 JSON 처리를 위해 사용
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
     // test
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
+    // UI
+    implementation(libs.androidx.appcompat)
+    implementation(libs.circleimageview)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
+    
     //glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
-    //glide - radius
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
+    implementation("com.github.skydoves:powerspinner:1.2.6")
 }
