@@ -33,9 +33,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
             binding.tvViews.text = searchItem.views.toString()
             binding.tvTitle.text = searchItem.title
 
-
             Glide.with(binding.root.context) // Glide를 사용하여 이미지 로딩
-                .load(searchItem.thumbnail.default.url)
+                .load(searchItem.thumbnail)
                 .placeholder(R.drawable.ic_reload) // 이미지 로드 실패 시 표시될 이미지
                 .into(binding.imgItem)
         }

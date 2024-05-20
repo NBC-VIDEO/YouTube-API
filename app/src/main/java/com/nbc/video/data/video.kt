@@ -3,8 +3,8 @@ data class Search(
 ) {
     data class Item(
         val title: String,
-        val thumbnail : Thumbnail,
-        val views : Long
+        val thumbnail: String,
+        val views: Long
     )
 }
 

@@ -17,8 +17,11 @@
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/roboto_regular"
         android:layout_height="wrap_content"
         android:text="title"
+        android:textSize="14sp"
+        android:maxLines="3"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@+id/img_item"
         app:layout_constraintTop_toTopOf="@+id/img_item" />
@@ -27,6 +30,8 @@
         android:id="@+id/tv_views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:maxLines="1"
         android:text="views"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
