@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,6 +42,7 @@ android {
 
 dependencies {
 
+    // core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation("androidx.fragment:fragment-ktx:1.6.2")
@@ -53,10 +55,14 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.fragment.ktx)
+
+    // Room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     // network
     implementation(libs.retrofit.core)
@@ -65,10 +71,19 @@ dependencies {
 
     // test
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
     // UI
+    implementation(libs.androidx.appcompat)
     implementation(libs.circleimageview)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
+    
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
-    // Glide
-    implementation(libs.glide)
+    implementation("com.github.skydoves:powerspinner:1.2.6")
 }
