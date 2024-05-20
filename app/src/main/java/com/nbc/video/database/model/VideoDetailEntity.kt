@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "video_detail")
-data class videoDetailEntity(
+data class VideoDetailEntity(
     @PrimaryKey
     val id : String,
     val channelId : String,

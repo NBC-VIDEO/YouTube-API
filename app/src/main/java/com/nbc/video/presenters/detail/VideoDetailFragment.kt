@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.nbc.video.database.model.videoDetailEntity
+import com.nbc.video.database.model.VideoDetailEntity
 import com.nbc.video.databinding.FragmentVideoDetailBinding
 import com.nbc.video.decimal
 import com.nbc.video.presenters.detail.data.DetailDummyData
@@ -48,7 +48,7 @@ class VideoDetailFragment : Fragment() {
 
         binding.btnDetailGood.setOnClickListener {
             // isLiked = true 로 변경 & 내부에 저장
-            val newVideo = videoDetailEntity(
+            val newVideo = VideoDetailEntity(
                 id = userDetailData.items.id,
                 channelId = userDetailData.items.snippet.channelId
             )
@@ -95,7 +95,7 @@ class VideoDetailFragment : Fragment() {
     private fun switchIsLiked(channelId: String) {
         var video = viewModel.getAllVideos().value?.firstOrNull { it.channelId == channelId }
         if (video == null) {
-            video = videoDetailEntity(
+            video = VideoDetailEntity(
                 id = userDetailData.items.id,
                 channelId = channelId,
                 isLiked = true

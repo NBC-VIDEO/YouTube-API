@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nbc.video.database.dao.VideoDetailDAO
-import com.nbc.video.database.model.videoDetailEntity
+import com.nbc.video.database.model.VideoDetailEntity
 
-@Database(entities = [videoDetailEntity::class], version = 1)
+@Database(entities = [VideoDetailEntity::class], version = 1)
 abstract class VideoDetailDatabase : RoomDatabase() {
     abstract fun videoDetailDAO(): VideoDetailDAO
 

@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.nbc.video.database.dao.VideoDetailDAO
 import com.nbc.video.database.VideoDetailDatabase
-import com.nbc.video.database.model.videoDetailEntity
+import com.nbc.video.database.model.VideoDetailEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,21 +18,21 @@ class VideoDetailViewModel(
     private val videoDetailDAO: VideoDetailDAO,
 ) : ViewModel() {
 
-    private val allVideos: LiveData<List<videoDetailEntity>> = videoDetailDAO.getAll()
+    private val allVideos: LiveData<List<VideoDetailEntity>> = videoDetailDAO.getAll()
 
-    fun insertVideo(video: videoDetailEntity) = viewModelScope.launch(ioDispatcher) {
+    fun insertVideo(video: VideoDetailEntity) = viewModelScope.launch(ioDispatcher) {
         videoDetailDAO.insertVideo(video)
     }
 
-    fun updateIsLiked(video: videoDetailEntity) = viewModelScope.launch(ioDispatcher) {
+    fun updateIsLiked(video: VideoDetailEntity) = viewModelScope.launch(ioDispatcher) {
         videoDetailDAO.updateIsLiked(video)
     }
 
-    fun  deleteVideo(video: videoDetailEntity) = viewModelScope.launch(ioDispatcher) {
+    fun  deleteVideo(video: VideoDetailEntity) = viewModelScope.launch(ioDispatcher) {
         videoDetailDAO.deleteVideo(video)
     }
 
-    fun getAllVideos(): LiveData<List<videoDetailEntity>> {
+    fun getAllVideos(): LiveData<List<VideoDetailEntity>> {
         return allVideos
     }
 
