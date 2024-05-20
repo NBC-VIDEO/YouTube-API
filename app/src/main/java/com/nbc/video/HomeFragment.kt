@@ -2,10 +2,12 @@ package com.nbc.video
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.data.DummyData
 import com.nbc.video.databinding.FragmentHomeBinding
@@ -51,36 +53,14 @@ class HomeFragment : Fragment() {
 
 
         //setRecyclerView()
+
     }
 
-    //Most Popular 영상 리스트
-    /*suspend fun popularVideos() {
+    //Most Popular 영상 리스트 시도 ..
+    suspend fun popularVideos() {
         val response = networkDataSource.getVideos(
-            chart = NetworkVideoChart.MOST_POPULAR, // MOST_POPULAR,
+            chart = NetworkVideoChart.MOST_POPULAR // MOST_POPULAR,
         )
+    }
 
-    }*/
-
-    //리사이클러뷰 레이아웃 설정
-    /*fun setRecyclerView() {
-        binding.rlPopular.adapter = homeAdapter
-        binding.rlPopular.layoutManager =
-            LinearLayoutManager(mContext).also {
-                it.orientation = LinearLayoutManager.HORIZONTAL
-            }
-
-        binding.rlCategory.adapter = homeAdapter
-        binding.rlCategory.layoutManager =
-            LinearLayoutManager(mContext).also {
-                it.orientation = LinearLayoutManager.HORIZONTAL
-            }
-
-
-        binding.rlChannel.adapter = homeAdapter
-        binding.rlChannel.layoutManager =
-            LinearLayoutManager(mContext).also {
-                it.orientation = LinearLayoutManager.HORIZONTAL
-            }
-
-    }*/
 }

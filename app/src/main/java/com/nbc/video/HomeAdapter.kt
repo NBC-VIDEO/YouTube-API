@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.nbc.video.data.CategoryVideo
 import com.nbc.video.data.ChannelVideo
 import com.nbc.video.data.PopularVideo
@@ -31,17 +33,19 @@ class HomeAdapter<T>(
         RecyclerView.ViewHolder(binding.root) {
         fun <T> bind(item: T) {
             when (item) {
-                is CategoryVideo -> {
-                    binding.tvTitle.text = item.title
-                    Glide.with(itemView.context)
-                        .load(item.thumbnails.medium.url)
-                        .into(binding.ivVideo)
-                }
-
                 is PopularVideo -> {
                     binding.tvTitle.text = item.title
                     Glide.with(itemView.context)
                         .load(item.thumbnails.medium.url)
+                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+                        .into(binding.ivVideo)
+                }
+
+                is CategoryVideo -> {
+                    binding.tvTitle.text = item.title
+                    Glide.with(itemView.context)
+                        .load(item.thumbnails.medium.url)
+                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                         .into(binding.ivVideo)
                 }
 
@@ -49,6 +53,7 @@ class HomeAdapter<T>(
                     binding.tvTitle.text = item.title
                     Glide.with(itemView.context)
                         .load(item.thumbnails.medium.url)
+                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                         .into(binding.ivVideo)
                 }
             }
