@@ -1,6 +1,3 @@
-import com.android.build.api.dsl.ApplicationDefaultConfig
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -19,7 +16,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        setLocalProperties()
     }
 
     buildTypes {
@@ -55,7 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.fragment:fragment-ktx:1.6.2")
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
 
     // Room
     val room_version = "2.6.1"
@@ -63,11 +58,18 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-}
 
-fun ApplicationDefaultConfig.setLocalProperties() {
-    // LocalProperties data load
-    val localProperties = gradleLocalProperties(rootDir, providers)
-    val youtubeApiKey: String = localProperties.getProperty("youtube.api.key")
-    buildConfigField("String", "YOUTUBE_API_KEY", youtubeApiKey)
+    // network
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp3.logging.interceptor)
+
+    // test
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // UI
+    implementation(libs.circleimageview)
+
+    // Glide
+    implementation(libs.glide)
 }
