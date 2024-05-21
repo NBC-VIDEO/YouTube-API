@@ -9,4 +9,11 @@ data class VideoDetailEntity(
     val id: String,
     val channelId: String,
     var isLiked: Boolean = false,
+    // My
+    val title: String,
+    val description: String,
+    val thumbnailUrl: String,
+    val views: Long,
+    val writtenName: String,
+    val dateTime: String,
 )

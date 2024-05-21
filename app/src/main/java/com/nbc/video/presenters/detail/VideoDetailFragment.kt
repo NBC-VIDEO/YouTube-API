@@ -42,12 +42,11 @@ class VideoDetailFragment : Fragment() {
 
         binding.btnDetailGood.setOnClickListener {
             // isLiked = true 로 변경 & 내부에 저장
-            val newVideo = VideoDetailEntity(
-                id = viewModel.videoDetailModelLiveData.value?.items?.firstOrNull()?.id!!,
-                channelId = viewModel.videoDetailModelLiveData.value?.items?.firstOrNull()?.snippet?.channelId!!,
-            )
-            viewModel.insertVideo(newVideo)
-            switchIsLiked(newVideo.channelId)
+            viewModel.videoDetailModelLiveData.value?.items?.firstOrNull()?.toEntity(true)
+                ?.let { newVideo ->
+                    viewModel.insertVideo(newVideo)
+                    switchIsLiked(newVideo.channelId)
+                }
         }
 
         viewModel.getAllVideos().observe(viewLifecycleOwner) {
@@ -101,12 +100,10 @@ class VideoDetailFragment : Fragment() {
     private fun switchIsLiked(channelId: String) {
         var video = viewModel.getAllVideos().value?.firstOrNull { it.channelId == channelId }
         if (video == null) {
-            video = VideoDetailEntity(
-                id = viewModel.videoDetailModelLiveData.value?.items?.firstOrNull()?.id!!,
-                channelId = channelId,
-                isLiked = true
-            )
-            viewModel.insertVideo(video)
+            video = viewModel.videoDetailModelLiveData.value?.items?.firstOrNull()?.toEntity(true)
+            if (video != null) {
+                viewModel.insertVideo(video)
+            }
         } else {
             val isLikedBefore = video.isLiked
             video.isLiked = !video.isLiked

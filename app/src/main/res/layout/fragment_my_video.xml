@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".presenters.my_video.MyVideoFragment">
 
+    <include layout="@layout/fragment_my_video_top_bar" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
@@ -46,7 +48,30 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline_recyclerview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_my_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_my_id" />
+
+    <TextView
+        android:id="@+id/tv_my_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:maxLines="1"
+        android:text="\@user-fg-dsfsdjfh87 · "
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_my_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_my_name" />
+
+    <TextView
+        android:id="@+id/tv_channel_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="채널 보기"
+        android:textColor="#6C6C6C"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_my_id"
+        app:layout_constraintStart_toEndOf="@+id/tv_my_id"
+        app:layout_constraintTop_toTopOf="@+id/tv_my_id" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_recyclerview"
@@ -54,7 +79,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="180dp" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_my_main"
