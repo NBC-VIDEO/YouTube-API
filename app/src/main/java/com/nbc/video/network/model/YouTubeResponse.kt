@@ -8,10 +8,10 @@ data class YouTubeResponse<T>(
     @SerializedName("nextPageToken") val nextPageToken: String,
     @SerializedName("prevPageToken") val prevPageToken: String,
     @SerializedName("pageInfo") val pageInfo: PageInfo,
-    @SerializedName("items") val items: List<T>
+    @SerializedName("items") val items: List<T>,
 ) {
     data class PageInfo(
         @SerializedName("totalResults") val totalResults: Int,
-        @SerializedName("resultsPerPage") val resultsPerPage: Int
+        @SerializedName("resultsPerPage") val resultsPerPage: Int,
     )
 }

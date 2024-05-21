@@ -3,30 +3,30 @@ package com.nbc.video.presenters.home.model
 data class VideoHomeModel(
     val popularVideo: List<PopularVideo>,
     val categoryVideo: List<CategoryVideo>,
-    val channelVideo: List<ChannelVideo>
+    val channelVideo: List<ChannelVideo>,
 )
 
 data class Category(
     val id: Int,  //카테고리 아이디
-    val channelId: String
+    val channelId: String,
 )
 
 data class PopularVideo(
     val thumbnails: Thumbnail,
     val title: String,
-    val id: Int
+    val id: Int,
 )
 
 data class CategoryVideo(
     val thumbnails: Thumbnail,
     val title: String,
-    val id: Int
+    val id: Int,
 )
 
 data class ChannelVideo(
     val thumbnails: Thumbnail,
     val title: String,
-    val id: Int
+    val id: Int,
 )
 
 data class Thumbnail(
@@ -38,5 +38,5 @@ data class Thumbnail(
 data class Image(
     val url: String,
     val width: Int,
-    val heigh: Int
+    val heigh: Int,
 )
