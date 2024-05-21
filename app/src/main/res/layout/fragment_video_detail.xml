@@ -20,11 +20,11 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_detail_thumbnail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="295dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/thumbnail" />
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/tv_detail_title"
