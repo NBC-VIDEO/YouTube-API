@@ -5,64 +5,91 @@
     android:layout_height="wrap_content"
     android:minHeight="56dp">
 
-    <ImageView
-        android:id="@+id/iv_main_nav_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_main_navigation_home"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_home"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_home"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_nav_home"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_main_nav_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_main_nav_search"
-        app:layout_constraintTop_toBottomOf="@+id/iv_main_nav_home" />
-
-    <ImageView
-        android:id="@+id/iv_main_nav_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_main_nav_search"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_search"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_search"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_nav_search"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_main_nav_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_nav_search"
+        android:layout_width="74dp"
+        android:layout_height="56dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_main_nav_search" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
 
-    <ImageView
-        android:id="@+id/iv_main_nav_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_main_nav_favorite"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_favorite"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_favorite"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_nav_favorite"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/iv_main_nav_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_main_nav_search"
+            app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_search"
+            app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_search"
+            app:layout_constraintStart_toStartOf="@+id/tv_main_nav_search"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_main_nav_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Favorite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_nav_search"
-        app:layout_constraintTop_toBottomOf="@+id/iv_main_nav_favorite" />
+        <TextView
+            android:id="@+id/tv_main_nav_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_nav_home"
+        android:layout_width="74dp"
+        android:layout_height="56dp"
+        app:layout_constraintEnd_toStartOf="@id/main_nav_search"
+        app:layout_constraintTop_toTopOf="@id/main_nav_search"
+        app:layout_constraintBottom_toBottomOf="@id/main_nav_search" >
+
+        <ImageView
+            android:id="@+id/iv_main_nav_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_main_navigation_home"
+            app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_home"
+            app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_home"
+            app:layout_constraintStart_toStartOf="@+id/tv_main_nav_home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_main_nav_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_nav_favorite"
+        android:layout_width="74dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toEndOf="@id/main_nav_search"
+        app:layout_constraintTop_toTopOf="@id/main_nav_search"
+        app:layout_constraintBottom_toBottomOf="@id/main_nav_search">
+
+        <ImageView
+            android:id="@+id/iv_main_nav_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_main_nav_favorite"
+            app:layout_constraintBottom_toTopOf="@+id/tv_main_nav_favorite"
+            app:layout_constraintEnd_toEndOf="@+id/tv_main_nav_favorite"
+            app:layout_constraintStart_toStartOf="@+id/tv_main_nav_favorite"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_main_nav_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,27 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.nbc.video.database.model.VideoDetailEntity
 import com.nbc.video.databinding.FragmentVideoDetailBinding
 import com.nbc.video.decimal
 import com.nbc.video.network.model.VideoResponse
 import com.nbc.video.presenters.detail.model.StatisticsModel
 import com.nbc.video.presenters.detail.model.VideoDetailsModel
 
-private const val ARG_PARAM1 = "param1"     // newInstance로 동영상 고유 ID값 받기
-
 class VideoDetailFragment : Fragment() {
-    private var param1: String? = null
     private lateinit var _binding: FragmentVideoDetailBinding
     private val binding get() = _binding
     private val viewModel: VideoDetailViewModel by viewModels { VideoDetailViewModel.viewModelFactory }
     private lateinit var videoDetailAdapter: VideoDetailAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)       // param1 : 동영상 고유 ID
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +32,12 @@ class VideoDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.updateVideoDetailModel("aUXaMdhod7U")
+
+        val input = requireArguments().getString("videoID")
+
+        if (input != null) {
+            viewModel.updateVideoDetailModel(input)
+        }
         initRecyclerview()
 
         binding.btnDetailGood.setOnClickListener {
@@ -122,16 +118,6 @@ class VideoDetailFragment : Fragment() {
 
     // 공유 기능
     private fun shareVideo() {}
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String) =
-            VideoDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                }
-            }
-    }
 }
 
 // Mapper
