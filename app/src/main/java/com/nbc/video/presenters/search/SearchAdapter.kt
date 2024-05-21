@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nbc.video.R
-import com.nbc.video.presenters.search.model.Search
 import com.nbc.video.databinding.ItemVideoBinding
+import com.nbc.video.presenters.search.model.Search
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
     private var videos: List<Search.Item> = emptyList()

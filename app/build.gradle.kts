@@ -71,9 +71,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
     
-    //glide
-    implementation("com.github.bumptech.glide:glide:4.14.2")
+    // glide
+    implementation(libs.glide)
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
-
+    
+    // spinner
     implementation("com.github.skydoves:powerspinner:1.2.6")
+
+    // navigation
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 }

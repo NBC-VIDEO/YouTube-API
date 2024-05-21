@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.nbc.video.databinding.FragmentMyVideoBinding
+import kotlinx.coroutines.launch
 
 class MyVideoFragment : Fragment() {
     private var _binding: FragmentMyVideoBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: MyVideoViewModel by viewModels { MyVideoViewModel.viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +29,9 @@ class MyVideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        setProfileView()
+        setProfileView()
         setRecyclerView()
+        observeRecyclerViewItem()
     }
 
     private fun setRecyclerView() {
@@ -34,9 +40,18 @@ class MyVideoFragment : Fragment() {
     }
 
     private fun setProfileView() {
-        binding.tvMyName.text = ""
-        binding.tvMyIntroduction.text = ""
-        Glide.with(requireContext()).load("URL").into(binding.ivMyProfile)
+        binding.tvMyName.text = "김민준"
+//        binding.tvMyIntroduction.text = "Hello"
+        Glide.with(requireContext())
+            .load("https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg?w=826")
+            .into(binding.ivMyProfile)
+    }
+
+    private fun observeRecyclerViewItem() = lifecycleScope.launch {
+        viewModel.likeVideos.observe(viewLifecycleOwner) {
+            val adapter = (binding.rvMyMain.adapter as? MyVideoListAdapter) ?: return@observe
+            adapter.submitList(it)
+        }
     }
 
     override fun onDestroyView() {

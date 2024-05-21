@@ -19,3 +19,4 @@ data class VideoResponse(
     @SerializedName("liveStreamingDetails") val liveStreamingDetails: com.nbc.video.network.model.video.LiveStreamingDetails,
     @SerializedName("localizations") val localizations: Map<String, com.nbc.video.network.model.video.Localization>,
 )
+

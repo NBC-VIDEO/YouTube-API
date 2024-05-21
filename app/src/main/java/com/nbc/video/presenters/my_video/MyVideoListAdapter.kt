@@ -18,12 +18,12 @@ class MyVideoListAdapter :
 
         fun bind(myVideo: MyVideo) = with(binding) {
             tvMyTitle.text = myVideo.title
-            tvMyViewer.text = myVideo.views.toString()
-            tvMyDateTime.text = myVideo.dateTime.toString()
+            tvMyViewer.text = "조회수 ${myVideo.views}회"
+            tvMyDateTime.text = myVideo.dateTime.run { "$hour:$minute" }
             tvMyDescription.text = myVideo.description
 
             Glide.with(itemView.context)
-                .load(myVideo.thumbnail.medium.url)
+                .load(myVideo.thumbnailUrl)
                 .into(ivMyThumb)
         }
     }

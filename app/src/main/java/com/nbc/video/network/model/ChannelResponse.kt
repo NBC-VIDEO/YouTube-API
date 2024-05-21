@@ -20,7 +20,7 @@ data class ChannelResponse(
     @SerializedName("contentOwnerDetails")
     val contentOwnerDetails: ContentOwnerDetails,
     @SerializedName("localizations")
-    val localizations: Map<String, Localization>
+    val localizations: Map<String, Localization>,
 ) {
     data class Snippet(
         @SerializedName("title")
@@ -38,7 +38,7 @@ data class ChannelResponse(
         @SerializedName("localized")
         val localized: Localized,
         @SerializedName("country")
-        val country: String
+        val country: String,
     )
 
     data class Thumbnail(
@@ -47,19 +47,19 @@ data class ChannelResponse(
         @SerializedName("width")
         val width: Int,
         @SerializedName("height")
-        val height: Int
+        val height: Int,
     )
 
     data class Localized(
         @SerializedName("title")
         val title: String,
         @SerializedName("description")
-        val description: String
+        val description: String,
     )
 
     data class ContentDetails(
         @SerializedName("relatedPlaylists")
-        val relatedPlaylists: RelatedPlaylists
+        val relatedPlaylists: RelatedPlaylists,
     )
 
     data class RelatedPlaylists(
@@ -68,7 +68,7 @@ data class ChannelResponse(
         @SerializedName("favorites")
         val favorites: String,
         @SerializedName("uploads")
-        val uploads: String
+        val uploads: String,
     )
 
     data class Statistics(
@@ -79,14 +79,14 @@ data class ChannelResponse(
         @SerializedName("hiddenSubscriberCount")
         val hiddenSubscriberCount: Boolean,
         @SerializedName("videoCount")
-        val videoCount: Long
+        val videoCount: Long,
     )
 
     data class TopicDetails(
         @SerializedName("topicIds")
         val topicIds: List<String>,
         @SerializedName("topicCategories")
-        val topicCategories: List<String>
+        val topicCategories: List<String>,
     )
 
     data class Status(
@@ -99,14 +99,14 @@ data class ChannelResponse(
         @SerializedName("madeForKids")
         val madeForKids: Boolean,
         @SerializedName("selfDeclaredMadeForKids")
-        val selfDeclaredMadeForKids: Boolean
+        val selfDeclaredMadeForKids: Boolean,
     )
 
     data class BrandingSettings(
         @SerializedName("channel")
         val channel: Channel,
         @SerializedName("watch")
-        val watch: Watch
+        val watch: Watch,
     ) {
         data class Channel(
             @SerializedName("title")
@@ -122,7 +122,7 @@ data class ChannelResponse(
             @SerializedName("defaultLanguage")
             val defaultLanguage: String,
             @SerializedName("country")
-            val country: String
+            val country: String,
         )
 
         data class Watch(
@@ -131,7 +131,7 @@ data class ChannelResponse(
             @SerializedName("backgroundColor")
             val backgroundColor: String,
             @SerializedName("featuredPlaylistId")
-            val featuredPlaylistId: String
+            val featuredPlaylistId: String,
         )
     }
 
@@ -143,20 +143,20 @@ data class ChannelResponse(
         @SerializedName("copyrightStrikesGoodStanding")
         val copyrightStrikesGoodStanding: Boolean,
         @SerializedName("contentIdClaimsGoodStanding")
-        val contentIdClaimsGoodStanding: Boolean
+        val contentIdClaimsGoodStanding: Boolean,
     )
 
     data class ContentOwnerDetails(
         @SerializedName("contentOwner")
         val contentOwner: String,
         @SerializedName("timeLinked")
-        val timeLinked: String
+        val timeLinked: String,
     )
 
     data class Localization(
         @SerializedName("title")
         val title: String,
         @SerializedName("description")
-        val description: String
+        val description: String,
     )
 }

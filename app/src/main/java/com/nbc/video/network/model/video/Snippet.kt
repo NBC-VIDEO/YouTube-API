@@ -1,10 +1,9 @@
 package com.nbc.video.network.model.video
 
 import com.google.gson.annotations.SerializedName
-import java.util.Date
 
 data class Snippet(
-    @SerializedName("publishedAt") val publishedAt: Date,
+    @SerializedName("publishedAt") val publishedAt: String,
     @SerializedName("channelId") val channelId: String,
     @SerializedName("title") val title: String,
     @SerializedName("description") val description: String,
