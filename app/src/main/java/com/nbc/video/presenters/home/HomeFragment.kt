@@ -59,25 +59,39 @@ class HomeFragment : Fragment() {
                 )
                 val spinnerList = response.items.map { it.snippet.title }   //카테고리 (타이틀)이름으로 리스트 생성
 
-                //스피너레이아웃과 스피너 리스트 연결
+                //스피너 레이아웃과 스피너 리스트 연결
                 spinner.adapter =
                     SpinnerAdapter(requireContext(), R.layout.item_spinner, spinnerList)
 
                 //스피너 클릭했을 때 리스너
                 spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
                     //카테고리 선택했을 때
                     override fun onItemSelected(
                         parent: AdapterView<*>?, view: View?, position: Int,
                         id: Long
                     ) {
                         lifecycleScope.launch {
+                            //2. 카테고리 관련 영상 리스트
                             (binding.rlCategory.adapter as? HomeAdapter<CategoryVideo>)?.let { adapter ->
                                 val categoryVideos = networkDataSource.getVideos(
                                     videoCategoryId = response.items[position].id,
                                     maxResults = 20
                                 ).items.map { it.toCategory() }
                                 adapter.updateItems(categoryVideos) //리스트 업데이트
+                            }
+
+                            //2. 카테고리 관련 채널 리스트
+                            (binding.rlChannel.adapter as? HomeAdapter<ChannelVideo>)?.let { adapter ->
+                                val category = networkDataSource.getVideoRegionCodeCategories(
+                                    regionCode = "kr" // 국가 코드 선택: en, kr
+                                ).items.map { it.snippet.title }
+
+                                val channelResponse = networkDataSource.searchVideos(
+                                    type = NetworkSearchType.CHANNEL,
+                                    query = category[position],
+                                    maxResults = 20
+                                ).items.map { it.toChannel() }
+                                adapter.updateItems(channelResponse)
                             }
                         }
 
