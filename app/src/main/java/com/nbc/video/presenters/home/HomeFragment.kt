@@ -2,26 +2,25 @@ package com.nbc.video.presenters.home
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
+import com.nbc.video.R
 import com.nbc.video.databinding.FragmentHomeBinding
 import com.nbc.video.network.NetworkDataSource
-import com.nbc.video.network.model.SearchResponse
-import com.nbc.video.network.model.VideoResponse
 import com.nbc.video.network.model.search.enums.NetworkSearchType
 import com.nbc.video.presenters.home.model.CategoryVideo
 import com.nbc.video.presenters.home.model.ChannelVideo
-import com.nbc.video.presenters.home.model.Image
 import com.nbc.video.presenters.home.model.PopularVideo
-import com.nbc.video.presenters.home.model.Thumbnail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -50,29 +49,81 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val spinner = binding.spinner
+
+        lifecycleScope.launch {
+            try {
+                //2. 카테고리 고른 후 영상 리스트 가져오기
+                val response = networkDataSource.getVideoRegionCodeCategories(
+                    regionCode = "kr" // 국가 코드 선택: en, kr
+                )
+                val spinnerList = response.items.map { it.snippet.title }   //카테고리 (타이틀)이름으로 리스트 생성
+
+                //스피너레이아웃과 스피너 리스트 연결
+                spinner.adapter =
+                    SpinnerAdapter(requireContext(), R.layout.item_spinner, spinnerList)
+
+                //스피너 클릭했을 때 리스너
+                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+                    //카테고리 선택했을 때
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?, view: View?, position: Int,
+                        id: Long
+                    ) {
+                        lifecycleScope.launch {
+                            (binding.rlCategory.adapter as? HomeAdapter<CategoryVideo>)?.let { adapter ->
+                                val categoryVideos = networkDataSource.getVideos(
+                                    videoCategoryId = response.items[position].id,
+                                    maxResults = 20
+                                ).items.map { it.toCategory() }
+                                adapter.updateItems(categoryVideos) //리스트 업데이트
+                            }
+                        }
+
+                        //카테고리 클릭하면 카테고리 (타이틀)이름 Toast 뜸
+                        val value = spinner.getItemAtPosition(position).toString()
+                        Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
+                    }
+
+                    //카테고리 선택하지 않았을 때
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+                }
+
+            } catch (e: Exception) {
+                Log.e("error", "카테고리 선택 후 리스트 불러오기 실패")
+            }
+        }
+
+        //데이터 매핑
         dataMapping()
     }
 
 
     //데이터 매핑
-    private fun dataMapping() {
-        //1. 인기있는 영상 리스트. 지역 코드 가져와야하나?
+    fun dataMapping() {
+        //1. 인기있는 영상 리스트.
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val popularResponse = networkDataSource.getVideos(
-                    maxResults = 20
+                    maxResults = 20 //최대 영상 20개
                 )
 
                 val popular = popularResponse.items.map { it.toPopular() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlPopular.adapter = HomeAdapter(popular)
+                    binding.rlPopular.adapter = HomeAdapter<PopularVideo>().apply {
+                        updateItems(popular)    //popular 리스트 업데이트
+                    }
+
                     binding.rlPopular.layoutManager =
                         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e("error", "인기 있는 영상 리스트 불러오기 실패")
             }
 
         }
@@ -91,13 +142,15 @@ class HomeFragment : Fragment() {
                 ).items.map { it.toCategory() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlCategory.adapter = HomeAdapter(categoryVideos)
+                    binding.rlCategory.adapter = HomeAdapter<CategoryVideo>().apply {
+                        updateItems(categoryVideos)
+                    }
                     binding.rlCategory.layoutManager =
                         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e("error", "카테고리 선택 후 관련 영상 리스트 불러오기 실패")
             }
         }
 
@@ -110,93 +163,23 @@ class HomeFragment : Fragment() {
                 ).items.map { it.snippet.title }
 
                 val channelResponse = networkDataSource.searchVideos(
-                    type = NetworkSearchType.CHANNEL, //name은 뭐지
-                    query = category[0] //query는 검색. 카테고리 0번쨰를 디폴트 값으로.
+                    type = NetworkSearchType.CHANNEL,
+                    query = category[0]     //query는 검색. 카테고리 0번째를 디폴트 값으로.
                 ).items.map { it.toChannel() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlChannel.adapter = HomeAdapter(channelResponse)
+                    binding.rlChannel.adapter = HomeAdapter<ChannelVideo>().apply {
+                        updateItems(channelResponse)
+                    }
                     binding.rlChannel.layoutManager =
                         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e("error", "카테고리 선택 후 채널 리스트 불러오기 실패")
             }
         }
 
     }
 
-
-    //1. Popular 리스트
-    fun VideoResponse.toPopular(): PopularVideo =
-        PopularVideo(
-            thumbnails = Thumbnail(
-                default = Image(
-                    url = this.snippet.thumbnails["defult"]?.url ?: "",
-                    width = this.snippet.thumbnails["defult"]?.width ?: 0,
-                    height = this.snippet.thumbnails["defult"]?.height ?: 0
-                ),
-                medium = Image(
-                    url = this.snippet.thumbnails["medium"]?.url ?: "",
-                    width = this.snippet.thumbnails["medium"]?.width ?: 0,
-                    height = this.snippet.thumbnails["medium"]?.height ?: 0
-                ),
-                height = Image(
-                    url = this.snippet.thumbnails["high"]?.url ?: "",
-                    width = this.snippet.thumbnails["high"]?.width ?: 0,
-                    height = this.snippet.thumbnails["high"]?.height ?: 0
-                )
-            ),
-            title = this.snippet.title
-        )
-
-
-    //2. Channel 리스트
-    fun SearchResponse.toChannel(): ChannelVideo =
-        ChannelVideo(
-            thumbnails = Thumbnail(
-                default = Image(
-                    url = this.snippet.thumbnails["defult"]?.url ?: "",
-                    width = this.snippet.thumbnails["defult"]?.width ?: 0,
-                    height = this.snippet.thumbnails["defult"]?.height ?: 0
-                ),
-                medium = Image(
-                    url = this.snippet.thumbnails["medium"]?.url ?: "",
-                    width = this.snippet.thumbnails["medium"]?.width ?: 0,
-                    height = this.snippet.thumbnails["medium"]?.height ?: 0
-                ),
-                height = Image(
-                    url = this.snippet.thumbnails["high"]?.url ?: "",
-                    width = this.snippet.thumbnails["high"]?.width ?: 0,
-                    height = this.snippet.thumbnails["high"]?.height ?: 0
-                )
-            ),
-            title = this.snippet.title, channelId = this.snippet.channelId
-        )
-
-
-    //3. Category에 따른 영상 리스트
-    fun VideoResponse.toCategory(): CategoryVideo =
-        CategoryVideo(
-            thumbnails = Thumbnail(
-                default = Image(
-                    url = this.snippet.thumbnails["defult"]?.url ?: "", //null인 경우 ""
-                    width = this.snippet.thumbnails["defult"]?.width ?: 0,
-                    height = this.snippet.thumbnails["defult"]?.height ?: 0
-
-                ),
-                medium = Image(
-                    url = this.snippet.thumbnails["medium"]?.url ?: "",
-                    width = this.snippet.thumbnails["medium"]?.width ?: 0,
-                    height = this.snippet.thumbnails["medium"]?.height ?: 0
-                ),
-                height = Image(
-                    url = this.snippet.thumbnails["high"]?.url ?: "",
-                    width = this.snippet.thumbnails["high"]?.width ?: 0,
-                    height = this.snippet.thumbnails["high"]?.height ?: 0
-                )
-            ),
-            title = this.snippet.title, categoryId = this.snippet.categoryId //카테고리 아이디
-        )
 }

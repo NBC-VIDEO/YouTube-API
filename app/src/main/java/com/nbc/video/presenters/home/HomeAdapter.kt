@@ -11,9 +11,16 @@ import com.nbc.video.presenters.home.model.ChannelVideo
 import com.nbc.video.presenters.home.model.PopularVideo
 import com.nbc.video.databinding.VideoItemBinding
 
-class HomeAdapter<T>(
-    private val items: List<T>,
-) : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
+class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
+
+    //처음에 비어있는 리스트
+    private var items: List<T> = emptyList()
+
+    //카테고리 선택후 리스트 업데이트
+    fun updateItems(items: List<T>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding = VideoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,7 +44,7 @@ class HomeAdapter<T>(
                     binding.tvTitle.text = item.title
                     Glide.with(itemView.context)
                         .load(item.thumbnails.medium.url)
-                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20))) //둥글게 처리
                         .into(binding.ivVideo)
                 }
 
