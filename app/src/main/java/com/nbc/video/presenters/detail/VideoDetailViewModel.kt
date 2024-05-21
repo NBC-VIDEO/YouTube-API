@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.nbc.video.AppApplication
-import com.nbc.video.database.dao.VideoDetailDAO
 import com.nbc.video.database.VideoDetailDatabase
+import com.nbc.video.database.dao.VideoDetailDAO
 import com.nbc.video.database.model.VideoDetailEntity
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.video.enums.NetworkVideoPart
@@ -34,7 +34,7 @@ class VideoDetailViewModel(
         videoDetailDAO.updateIsLiked(video)
     }
 
-    fun  deleteVideo(video: VideoDetailEntity) = viewModelScope.launch(ioDispatcher) {
+    fun deleteVideo(video: VideoDetailEntity) = viewModelScope.launch(ioDispatcher) {
         videoDetailDAO.deleteVideo(video)
     }
 
@@ -69,7 +69,8 @@ class VideoDetailViewModel(
         @Suppress("UNCHECKED_CAST")
         val viewModelFactory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                val application = checkNotNull(extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY])
+                val application =
+                    checkNotNull(extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY])
                 val database = VideoDetailDatabase.getInstance(application)
 
                 val ioDispatcher = Dispatchers.IO

@@ -14,7 +14,7 @@ enum class NetworkChannelPart {
 }
 
 fun NetworkChannelPart.toRequestBody(): String =
-    when(this) {
+    when (this) {
         NetworkChannelPart.AUDIT_DETAILS -> "auditDetails"
         NetworkChannelPart.BRANDING_SETTINGS -> "brandingSettings"
         NetworkChannelPart.CONTENT_DETAILS -> "contentDetails"

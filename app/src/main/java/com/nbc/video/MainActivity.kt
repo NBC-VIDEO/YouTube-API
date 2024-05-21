@@ -1,6 +1,7 @@
 package com.nbc.video
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,7 +21,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val navFragment = supportFragmentManager.findFragmentById(R.id.fr_navigation) as NavHostFragment
+        val navFragment =
+            supportFragmentManager.findFragmentById(R.id.fr_navigation) as NavHostFragment
         var navController = navFragment.navController
         var destination = navController.currentDestination?.id
 

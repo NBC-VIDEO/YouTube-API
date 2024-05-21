@@ -1,7 +1,7 @@
 package com.nbc.video.presenters.detail.model
 
 data class VideoDetailsModel(
-    val items: List<VideoDetails>
+    val items: List<VideoDetails>,
 )
 
 data class VideoDetails(
@@ -19,7 +19,7 @@ data class VideoSnippetModel(
     val thumbnails: ThumbnailsModel?,   // 썸네일
     val channelTitle: String?,                  // 채널 제목
     val tags: List<String>?,                    // 동영상 태그 목록
-    val isLiked: Boolean = false            // 좋아요 표시
+    val isLiked: Boolean = false,            // 좋아요 표시
 )
 
 data class ThumbnailsModel(

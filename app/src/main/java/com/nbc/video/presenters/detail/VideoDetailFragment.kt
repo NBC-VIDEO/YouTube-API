@@ -62,7 +62,7 @@ class VideoDetailFragment : Fragment() {
         }
     }
 
-        // 리사이클러뷰 연결
+    // 리사이클러뷰 연결
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerview() {
         videoDetailAdapter = VideoDetailAdapter()
@@ -83,10 +83,14 @@ class VideoDetailFragment : Fragment() {
                     .into(ivDetailThumbnail)
             }
             tvDetailTitle.text = videoDetailsModel.items.firstOrNull()?.snippet?.title
-            tvDetailViewCount.text = decimal(videoDetailsModel.items.firstOrNull()?.statistics?.viewCount!!)
-            tvDetailPublish.text = videoDetailsModel.items.firstOrNull()?.snippet?.publishedAt?.replace("T"," ")?.substring(0 until 19)
+            tvDetailViewCount.text =
+                decimal(videoDetailsModel.items.firstOrNull()?.statistics?.viewCount!!)
+            tvDetailPublish.text =
+                videoDetailsModel.items.firstOrNull()?.snippet?.publishedAt?.replace("T", " ")
+                    ?.substring(0 until 19)
             tvDetailChannelName.text = videoDetailsModel.items.firstOrNull()?.snippet?.channelTitle
-            tvDetailChannelId.text = videoDetailsModel.items.firstOrNull()?.snippet?.channelId?.replace("_", "-")
+            tvDetailChannelId.text =
+                videoDetailsModel.items.firstOrNull()?.snippet?.channelId?.replace("_", "-")
             Glide.with(requireContext())
                 .load(videoDetailsModel.items.firstOrNull()?.channelSnippet?.thumbnails?.default?.url)
                 .into(ivDetailChannelImage)

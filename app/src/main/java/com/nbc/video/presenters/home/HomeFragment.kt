@@ -2,15 +2,15 @@ package com.nbc.video.presenters.home
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nbc.video.presenters.home.data.HomeDummyData
 import com.nbc.video.databinding.FragmentHomeBinding
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.video.enums.NetworkVideoChart
+import com.nbc.video.presenters.home.data.HomeDummyData
 
 
 class HomeFragment : Fragment() {
@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
