@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.nbc.video.databinding.VideoItemBinding
 import com.nbc.video.presenters.home.model.CategoryVideo
 import com.nbc.video.presenters.home.model.ChannelVideo
 import com.nbc.video.presenters.home.model.PopularVideo
-import com.nbc.video.databinding.VideoItemBinding
 
 class HomeAdapter<T>(
     private val items: List<T>,

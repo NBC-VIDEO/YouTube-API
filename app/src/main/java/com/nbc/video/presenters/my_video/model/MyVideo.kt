@@ -9,7 +9,7 @@ data class MyVideo(
     val thumbnail: Thumbnail,
     val views: Long,
     val writtenName: String,
-    val dateTime: LocalDateTime
+    val dateTime: LocalDateTime,
 ) {
 
     data class Thumbnail(
@@ -21,6 +21,6 @@ data class MyVideo(
     data class Image(
         val url: String,
         val width: Int,
-        val high: Int
+        val high: Int,
     )
 }
