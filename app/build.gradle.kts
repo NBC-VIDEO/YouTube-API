@@ -74,6 +74,7 @@ dependencies {
     // glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    
     implementation("com.github.skydoves:powerspinner:1.2.6")
 
     // navigation
