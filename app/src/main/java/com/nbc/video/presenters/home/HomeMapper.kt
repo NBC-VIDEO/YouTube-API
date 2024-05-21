@@ -11,6 +11,7 @@ import com.nbc.video.presenters.home.model.Thumbnail
 //1. Popular 리스트
 fun VideoResponse.toPopular(): PopularVideo =
     PopularVideo(
+        id = id,
         thumbnails = Thumbnail(
             default = Image(
                 url = this.snippet.thumbnails["default"]?.url ?: "",
@@ -35,6 +36,7 @@ fun VideoResponse.toPopular(): PopularVideo =
 //2. Category 에 따른 영상 리스트
 fun SearchResponse.toChannel(): ChannelVideo =
     ChannelVideo(
+        id = id.videoId ?: "",
         thumbnails = Thumbnail(
             default = Image(
                 url = this.snippet.thumbnails["default"]?.url ?: "",
@@ -59,6 +61,7 @@ fun SearchResponse.toChannel(): ChannelVideo =
 //3. Category 에 따른 Channel 리스트
 fun VideoResponse.toCategory(): CategoryVideo =
     CategoryVideo(
+        id = id,
         thumbnails = Thumbnail(
             default = Image(
                 url = this.snippet.thumbnails["default"]?.url ?: "", //null인 경우 ""

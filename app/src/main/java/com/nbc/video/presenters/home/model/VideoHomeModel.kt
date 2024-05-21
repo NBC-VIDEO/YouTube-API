@@ -15,6 +15,7 @@ data class Category(
 
 //1. 인기 있는 비디오 리스트
 data class PopularVideo(
+    val id: String,
     val thumbnails: Thumbnail,
     val title: String
 )
@@ -22,6 +23,7 @@ data class PopularVideo(
 
 //2. 카테고리 선택후 비디오 리스트
 data class CategoryVideo(
+    val id: String,
     val thumbnails: Thumbnail,
     val title: String,
     val categoryId: String //카테고리 아이디
@@ -29,6 +31,7 @@ data class CategoryVideo(
 
 //3. 카테고리 선택 후 채널 리스트
 data class ChannelVideo(
+    val id: String,
     val thumbnails: Thumbnail,
     val title: String,  // 채널의 이름
     val channelId: String

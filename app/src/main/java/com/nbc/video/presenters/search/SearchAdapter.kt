@@ -8,12 +8,14 @@ import com.nbc.video.R
 import com.nbc.video.databinding.ItemVideoBinding
 import com.nbc.video.presenters.search.model.Search
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
+class SearchAdapter(
+    private val onVideoClick: (Search.Item) -> Unit,
+) : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
     private var videos: List<Search.Item> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding = ItemVideoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VideoViewHolder(binding)
+        return VideoViewHolder(binding, onVideoClick)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
@@ -27,8 +29,10 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class VideoViewHolder(private val binding: ItemVideoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class VideoViewHolder(
+        private val binding: ItemVideoBinding,
+        private val onVideoClick: (Search.Item) -> Unit,
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(searchItem: Search.Item) { // 항목 바인딩
             binding.tvViews.text = searchItem.views.toString()
@@ -38,6 +42,9 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VideoViewHolder>() {
                 .load(searchItem.thumbnail)
                 .placeholder(R.drawable.ic_reload) // 이미지 로드 실패 시 표시될 이미지
                 .into(binding.imgItem)
+            binding.root.setOnClickListener {
+                onVideoClick(searchItem)
+            }
         }
     }
 }

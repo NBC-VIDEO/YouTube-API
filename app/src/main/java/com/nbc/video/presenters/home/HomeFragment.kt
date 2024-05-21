@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
 import com.nbc.video.R
@@ -53,12 +55,23 @@ class HomeFragment : Fragment() {
 
         binding.rlPopular.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rlPopular.adapter = HomeAdapter<PopularVideo> {
+            val bundle = bundleOf("videoID" to it)
+            findNavController().navigate(R.id.action_homeFragment_to_videoDetailFragment, bundle)
+        }
 
         binding.rlCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rlCategory.adapter = HomeAdapter<CategoryVideo> {
+            val bundle = bundleOf("videoID" to it)
+            findNavController().navigate(R.id.action_homeFragment_to_videoDetailFragment, bundle)
+        }
 
         binding.rlChannel.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rlChannel.adapter = HomeAdapter<ChannelVideo> {
+
+        }
 
 
         lifecycleScope.launch {
@@ -132,14 +145,14 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val popularResponse = networkDataSource.getVideos(
-                    maxResults = 20 //최대 영상 20개
+                    maxResults = 10 //최대 영상 20개
                 )
 
                 val popular = popularResponse.items.map { it.toPopular() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlPopular.adapter = HomeAdapter<PopularVideo>().apply {
-                        updateItems(popular)    //popular 리스트 업데이트
+                    (binding.rlPopular.adapter as? HomeAdapter<PopularVideo>)?.apply {
+                        updateItems(popular)
                     }
                 }
 
@@ -159,11 +172,11 @@ class HomeFragment : Fragment() {
 
                 val categoryVideos = networkDataSource.getVideos(
                     videoCategoryId = response.items.first().id,
-                    maxResults = 20
+                    maxResults = 10
                 ).items.map { it.toCategory() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlCategory.adapter = HomeAdapter<CategoryVideo>().apply {
+                    (binding.rlCategory.adapter as? HomeAdapter<CategoryVideo>)?.apply {
                         updateItems(categoryVideos)
                     }
                 }
@@ -187,7 +200,7 @@ class HomeFragment : Fragment() {
                 ).items.map { it.toChannel() }
 
                 requireActivity().runOnUiThread {
-                    binding.rlChannel.adapter = HomeAdapter<ChannelVideo>().apply {
+                    (binding.rlChannel.adapter as? HomeAdapter<ChannelVideo>)?.apply {
                         updateItems(channelResponse)
                     }
                 }

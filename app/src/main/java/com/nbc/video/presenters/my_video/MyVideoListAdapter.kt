@@ -9,11 +9,14 @@ import com.bumptech.glide.Glide
 import com.nbc.video.databinding.RecyclerviewMyVideoItemBinding
 import com.nbc.video.presenters.my_video.model.MyVideo
 
-class MyVideoListAdapter :
+class MyVideoListAdapter(
+    private val onItemClicked: (MyVideo) -> Unit
+) :
     ListAdapter<MyVideo, MyVideoListAdapter.MyVideoViewHolder>(diffCallback) {
 
     class MyVideoViewHolder(
         private val binding: RecyclerviewMyVideoItemBinding,
+        private val onItemClicked: (MyVideo) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(myVideo: MyVideo) = with(binding) {
@@ -25,6 +28,10 @@ class MyVideoListAdapter :
             Glide.with(itemView.context)
                 .load(myVideo.thumbnailUrl)
                 .into(ivMyThumb)
+
+            binding.root.setOnClickListener {
+                onItemClicked(myVideo)
+            }
         }
     }
 
@@ -34,7 +41,7 @@ class MyVideoListAdapter :
             parent,
             false
         )
-        return MyVideoViewHolder(view)
+        return MyVideoViewHolder(view, onItemClicked)
     }
 
     override fun onBindViewHolder(holder: MyVideoViewHolder, position: Int) {

@@ -11,7 +11,9 @@ import com.nbc.video.presenters.home.model.CategoryVideo
 import com.nbc.video.presenters.home.model.ChannelVideo
 import com.nbc.video.presenters.home.model.PopularVideo
 
-class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
+class HomeAdapter<T>(
+    private val itemClickListener: (String) -> Unit
+) : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
 
     //처음에 비어있는 리스트
     private var items: List<T> = emptyList()
@@ -24,7 +26,7 @@ class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding = VideoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VideoViewHolder(binding)
+        return VideoViewHolder(binding, itemClickListener)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
@@ -36,8 +38,10 @@ class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
         return items.size
     }
 
-    class VideoViewHolder(private val binding: VideoItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class VideoViewHolder(
+        private val binding: VideoItemBinding,
+        private val itemClickListener: (String) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun <T> bind(item: T) {
             when (item) {
                 is PopularVideo -> {
@@ -46,6 +50,9 @@ class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
                         .load(item.thumbnails.medium.url)
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(20))) //둥글게 처리
                         .into(binding.ivVideo)
+                    binding.root.setOnClickListener {
+                        itemClickListener(item.id)
+                    }
                 }
 
                 is CategoryVideo -> {
@@ -54,6 +61,9 @@ class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
                         .load(item.thumbnails.medium.url)
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                         .into(binding.ivVideo)
+                    binding.root.setOnClickListener {
+                        itemClickListener(item.id)
+                    }
                 }
 
                 is ChannelVideo -> {
@@ -62,6 +72,9 @@ class HomeAdapter<T> : RecyclerView.Adapter<HomeAdapter.VideoViewHolder>() {
                         .load(item.thumbnails.medium.url)
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                         .into(binding.ivVideo)
+                    binding.root.setOnClickListener {
+                        itemClickListener(item.id)
+                    }
                 }
             }
         }
