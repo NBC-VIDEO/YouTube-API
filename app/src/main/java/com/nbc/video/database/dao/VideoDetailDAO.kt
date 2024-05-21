@@ -18,16 +18,23 @@ interface VideoDetailDAO {
 
     // 모든 VideoDetailEntity 가져오기
     @Query("Select * FROM video_detail")
-    fun getAll() : LiveData<List<VideoDetailEntity>>
+    fun getAll(): LiveData<List<VideoDetailEntity>>
 
     // channelId 에 해당하는 값 가져오기
     @Query("SELECT * FROM video_detail WHERE channelId = :channelId")
-    suspend fun getVideoByChannelId(channelId : String) : VideoDetailEntity
+    suspend fun getVideoByChannelId(channelId: String): VideoDetailEntity
+
+    // 특정 아이디 아이템 가져오기
+    @Query("SELECT * FROM video_detail WHERE id = :id")
+    suspend fun getVideoById(id: String): VideoDetailEntity?
 
     @Update
     suspend fun updateIsLiked(videoDetailEntity: VideoDetailEntity)
 
     // VideoDetailEntity 삭제
+    @Query("DELETE FROM video_detail WHERE id = :id")
+    suspend fun deleteVideo(id: String)
+
     @Delete
     suspend fun deleteVideo(videoDetailEntity: VideoDetailEntity)
 }
