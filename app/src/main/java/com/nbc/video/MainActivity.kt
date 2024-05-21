@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity() {
                     navController = navFragment.navController
                     destination = navController.currentDestination?.id
                 }
+                if (destination == R.id.videoDetailFragment) {
+                    navController.navigate(R.id.action_videoDetailFragment_to_homeFragment)
+                    navController = navFragment.navController
+                    destination = navController.currentDestination?.id
+                }
             }
             includeMainNavigation.mainNavSearch.setOnClickListener {
                 if (destination == R.id.homeFragment) {
@@ -49,6 +54,11 @@ class MainActivity : AppCompatActivity() {
                     navController = navFragment.navController
                     destination = navController.currentDestination?.id
                 }
+                if (destination == R.id.videoDetailFragment) {
+                    navController.navigate(R.id.action_videoDetailFragment_to_searchFragment)
+                    navController = navFragment.navController
+                    destination = navController.currentDestination?.id
+                }
             }
             includeMainNavigation.mainNavFavorite.setOnClickListener {
                 if (destination == R.id.homeFragment) {
@@ -58,6 +68,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 if (destination == R.id.searchFragment) {
                     navController.navigate(R.id.action_searchFragment_to_myVideoFragment)
+                    navController = navFragment.navController
+                    destination = navController.currentDestination?.id
+                }
+                if (destination == R.id.videoDetailFragment) {
+                    navController.navigate(R.id.action_videoDetailFragment_to_myVideoFragment)
                     navController = navFragment.navController
                     destination = navController.currentDestination?.id
                 }
