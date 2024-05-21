@@ -51,6 +51,16 @@ class HomeFragment : Fragment() {
 
         val spinner = binding.spinner
 
+        binding.rlPopular.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rlCategory.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rlChannel.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+
         lifecycleScope.launch {
             try {
                 //2. 카테고리 고른 후 영상 리스트 가져오기
@@ -131,9 +141,6 @@ class HomeFragment : Fragment() {
                     binding.rlPopular.adapter = HomeAdapter<PopularVideo>().apply {
                         updateItems(popular)    //popular 리스트 업데이트
                     }
-
-                    binding.rlPopular.layoutManager =
-                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
@@ -159,8 +166,6 @@ class HomeFragment : Fragment() {
                     binding.rlCategory.adapter = HomeAdapter<CategoryVideo>().apply {
                         updateItems(categoryVideos)
                     }
-                    binding.rlCategory.layoutManager =
-                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
@@ -185,8 +190,6 @@ class HomeFragment : Fragment() {
                     binding.rlChannel.adapter = HomeAdapter<ChannelVideo>().apply {
                         updateItems(channelResponse)
                     }
-                    binding.rlChannel.layoutManager =
-                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 }
 
             } catch (e: Exception) {
