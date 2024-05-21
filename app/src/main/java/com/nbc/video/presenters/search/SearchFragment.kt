@@ -4,25 +4,29 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
-import com.nbc.video.adapter.SearchAdapter
 import com.nbc.video.databinding.FragmentSearchBinding
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.SearchResponse
 import com.nbc.video.network.model.search.enums.NetworkSearchType
+import com.nbc.video.presenters.search.SearchAdapter
+import com.nbc.video.presenters.search.model.Search
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
+import kotlin.random.Random
 
-class   SearchFragment : Fragment() {
+class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var searchAdapter: SearchAdapter
@@ -43,9 +47,9 @@ class   SearchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view)
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-//        searchYouTubeVideos("쌍수 후 관리법")
+        setupSearchEditText()
     }
 
     override fun onDestroyView() {
@@ -71,6 +75,34 @@ class   SearchFragment : Fragment() {
         }
     }
 
+    private fun setupSearchEditText() {
+        binding.etSearch.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                performSearch()
+                true
+            } else {
+                false
+            }
+        }
+
+        binding.etSearch.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                performSearch()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun performSearch() {
+        val query = binding.etSearch.text.toString().trim()
+        if (query.isNotEmpty()) {
+            searchYouTubeVideos(query)
+            hideKeyboard(requireActivity())
+        }
+    }
+
     private fun searchYouTubeVideos(query: String) {
         try {
             networkDataSource.get()?.let { network ->
@@ -80,7 +112,7 @@ class   SearchFragment : Fragment() {
                         val response = network.searchVideos(
                             query = query, // 검색어
                             type = NetworkSearchType.VIDEO, // 서치 타입
-                            maxResults = 10 // 데이터 가져오려는 개수
+                            maxResults = 30 // 데이터 가져오려는 개수
                         )
 
                         withContext(Dispatchers.Main) {
@@ -136,8 +168,8 @@ private fun List<SearchResponse>.toSearchItem(): List<Search.Item> {
     return map {
         Search.Item(
             title = it.snippet.title,
-            views = it.view,
-            thumbnail = it.snippet.thumbnails["default"]!!.url
+            views = Random.nextLong(1000, 1000000), // 1000에서 1000000 사이의 랜덤 조회수
+            thumbnail = it.snippet.thumbnails["default"]?.url?:""
         )
     }
 }

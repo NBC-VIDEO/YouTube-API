@@ -1,4 +1,4 @@
-package com.nbc.video
+package com.nbc.video.presenters.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.nbc.video.database.model.VideoDetailEntity
 import com.nbc.video.databinding.FragmentVideoDetailBinding
+import com.nbc.video.decimal
+import com.nbc.video.presenters.detail.data.DetailDummyData
 
 private const val ARG_PARAM1 = "param1"     // newInstance로 동영상 고유 ID값 받기
 
@@ -29,7 +32,7 @@ class VideoDetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentVideoDetailBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,7 +48,7 @@ class VideoDetailFragment : Fragment() {
 
         binding.btnDetailGood.setOnClickListener {
             // isLiked = true 로 변경 & 내부에 저장
-            val newVideo = videoDetailEntity(
+            val newVideo = VideoDetailEntity(
                 id = userDetailData.items.id,
                 channelId = userDetailData.items.snippet.channelId
             )
@@ -64,7 +67,8 @@ class VideoDetailFragment : Fragment() {
         val userDetailData = userDetailData.items.snippet
         val videoDetailAdapter = VideoDetailAdapter()
         binding.detailRecyclerview.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = videoDetailAdapter
             videoDetailAdapter.data = userDetailData
             videoDetailAdapter.notifyDataSetChanged()
@@ -77,7 +81,7 @@ class VideoDetailFragment : Fragment() {
                 .load(userDetailData.items.snippet.thumbnails.default.url)
                 .into(ivDetailThumbnail)
             tvDetailTitle.text = userDetailData.items.snippet.title
-            tvDetailViewCount.text = Decimal(userDetailData.items.statistics.viewCount)
+            tvDetailViewCount.text = decimal(userDetailData.items.statistics.viewCount)
             tvDetailPublish.text = userDetailData.items.snippet.publishedAt
             tvDetailChannelName.text = userDetailData.items.snippet.channelTitle
             tvDetailChannelId.text = userDetailData.items.snippet.channelId
@@ -91,7 +95,7 @@ class VideoDetailFragment : Fragment() {
     private fun switchIsLiked(channelId: String) {
         var video = viewModel.getAllVideos().value?.firstOrNull { it.channelId == channelId }
         if (video == null) {
-            video = videoDetailEntity(
+            video = VideoDetailEntity(
                 id = userDetailData.items.id,
                 channelId = channelId,
                 isLiked = true

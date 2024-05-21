@@ -46,7 +46,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.fragment.ktx)
-<<<<<<< HEAD
 
     // Room
     val room_version = "2.6.1"
@@ -54,8 +53,6 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-=======
->>>>>>> a4ece4d74736c3fea663e9e9b9cc3d42c6e2e3db
 
     // network
     implementation(libs.retrofit.core)
@@ -72,16 +69,14 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.circleimageview)
     implementation(libs.androidx.constraintlayout)
-<<<<<<< HEAD
+
     implementation(libs.material)
     
     //glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
-=======
     implementation(libs.glide)
     implementation(libs.material)
->>>>>>> a4ece4d74736c3fea663e9e9b9cc3d42c6e2e3db
 
     implementation("com.github.skydoves:powerspinner:1.2.6")
 }

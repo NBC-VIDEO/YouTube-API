@@ -1,9 +1,16 @@
-package com.nbc.video.data
+package com.nbc.video.presenters.home.data
+
+import com.nbc.video.presenters.home.model.CategoryVideo
+import com.nbc.video.presenters.home.model.ChannelVideo
+import com.nbc.video.presenters.home.model.Image
+import com.nbc.video.presenters.home.model.PopularVideo
+import com.nbc.video.presenters.home.model.Thumbnail
+import com.nbc.video.presenters.home.model.VideoHomeModel
 
 // 싱글톤 객체 정의
 
 
-object DummyData {
+object HomeDummyData {
     private lateinit var _video: VideoHomeModel
     val video: VideoHomeModel get() = _video
     fun getDummyPopularVideos(): List<PopularVideo> {
@@ -269,11 +276,3 @@ object DummyData {
         )
     }
 }
-
-/*fun main() {
-    // Get the dummy data from the object
-    val videoHomeModel = DummyDataProvider.getDummyVideoHomeModel()
-
-    // Print the dummy data
-    println(videoHomeModel)
-}*/
