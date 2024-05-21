@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.nbc.video.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,64 +22,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val navFragment =
-            supportFragmentManager.findFragmentById(R.id.fr_navigation) as NavHostFragment
-        var navController = navFragment.navController
-        var destination = navController.currentDestination?.id
-
-        binding.apply {
-            includeMainNavigation.mainNavHome.setOnClickListener {
-                if (destination == R.id.searchFragment) {
-                    navController.navigate(R.id.action_searchFragment_to_homeFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.myVideoFragment) {
-                    navController.navigate(R.id.action_myVideoFragment_to_homeFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.videoDetailFragment) {
-                    navController.navigate(R.id.action_videoDetailFragment_to_homeFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-            }
-            includeMainNavigation.mainNavSearch.setOnClickListener {
-                if (destination == R.id.homeFragment) {
-                    navController.navigate(R.id.action_homeFragment_to_searchFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.myVideoFragment) {
-                    navController.navigate(R.id.action_myVideoFragment_to_searchFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.videoDetailFragment) {
-                    navController.navigate(R.id.action_videoDetailFragment_to_searchFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-            }
-            includeMainNavigation.mainNavFavorite.setOnClickListener {
-                if (destination == R.id.homeFragment) {
-                    navController.navigate(R.id.action_homeFragment_to_myVideoFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.searchFragment) {
-                    navController.navigate(R.id.action_searchFragment_to_myVideoFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-                if (destination == R.id.videoDetailFragment) {
-                    navController.navigate(R.id.action_videoDetailFragment_to_myVideoFragment)
-                    navController = navFragment.navController
-                    destination = navController.currentDestination?.id
-                }
-            }
-        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(binding.frNavigation.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
     }
 }
 
