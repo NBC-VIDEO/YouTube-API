@@ -1,6 +1,6 @@
 package com.nbc.video.network.retrofit
 
-import com.nbc.video.network.BASE_URL
+import com.nbc.video.BASE_URL
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.ChannelResponse
 import com.nbc.video.network.model.SearchResponse
