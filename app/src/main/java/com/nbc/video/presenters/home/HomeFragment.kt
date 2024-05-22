@@ -57,14 +57,14 @@ class HomeFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rlPopular.adapter = HomeAdapter<PopularVideo> {
             val bundle = bundleOf("videoID" to it)
-            findNavController().navigate(R.id.action_homeFragment_to_videoDetailFragment, bundle)
+            findNavController().navigate(R.id.videoDetailFragment, bundle)
         }
 
         binding.rlCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rlCategory.adapter = HomeAdapter<CategoryVideo> {
             val bundle = bundleOf("videoID" to it)
-            findNavController().navigate(R.id.action_homeFragment_to_videoDetailFragment, bundle)
+            findNavController().navigate(R.id.videoDetailFragment, bundle)
         }
 
         binding.rlChannel.layoutManager =

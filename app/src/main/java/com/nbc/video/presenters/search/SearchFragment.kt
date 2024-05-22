@@ -72,7 +72,7 @@ class SearchFragment : Fragment() {
     private fun setupRecyclerView() {
         searchAdapter = SearchAdapter {
             val bundle = bundleOf("videoID" to it.id)
-            findNavController().navigate(R.id.action_searchFragment_to_videoDetailFragment, bundle)
+            findNavController().navigate(R.id.videoDetailFragment, bundle)
         }
         binding.rvSearch.apply {
             layoutManager = LinearLayoutManager(context)

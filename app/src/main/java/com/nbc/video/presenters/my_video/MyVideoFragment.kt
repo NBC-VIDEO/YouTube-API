@@ -40,7 +40,7 @@ class MyVideoFragment : Fragment() {
     private fun setRecyclerView() {
         binding.rvMyMain.adapter = MyVideoListAdapter {
             val bundle = bundleOf("videoID" to it.id)
-            findNavController().navigate(R.id.action_myVideoFragment_to_videoDetailFragment, bundle)
+            findNavController().navigate(R.id.videoDetailFragment, bundle)
         }
         binding.rvMyMain.layoutManager = LinearLayoutManager(requireContext())
     }
