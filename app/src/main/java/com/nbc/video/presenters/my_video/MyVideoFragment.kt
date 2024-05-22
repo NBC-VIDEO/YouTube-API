@@ -46,11 +46,10 @@ class MyVideoFragment : Fragment() {
     }
 
     private fun setProfileView() {
-        binding.tvMyName.text = "김민준"
-//        binding.tvMyIntroduction.text = "Hello"
+        binding.layoutProfile.tvMyName.text = "김민준"
         Glide.with(requireContext())
             .load("https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg?w=826")
-            .into(binding.ivMyProfile)
+            .into(binding.layoutProfile.ivMyProfile)
     }
 
     private fun observeRecyclerViewItem() = lifecycleScope.launch {
