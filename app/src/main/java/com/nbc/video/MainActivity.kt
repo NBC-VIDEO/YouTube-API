@@ -1,12 +1,10 @@
 package com.nbc.video
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -19,11 +17,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        window.navigationBarColor = getColor(R.color.background_color);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setNavigation()
+    }
+
+    private fun setNavigation() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(binding.frNavigation.id) as NavHostFragment
@@ -51,10 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController(binding.frNavigation.id)
-        return item.onNavDestinationSelected(navController)
-    }
 }
 
 
