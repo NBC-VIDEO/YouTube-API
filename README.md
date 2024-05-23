@@ -1,52 +1,60 @@
 # 프로젝트 명 : 오튜브
 
 # 팀 소개
-|장혜정|김민준|정서영|김태준|
-|----|----|----|----|
-|![장혜정](https://avatars.githubusercontent.com/u/112006114?v=4)|![김민준](https://github.com/NBC-Chapter3-4/Messenger/assets/60022205/70d0b3ca-46a3-4912-a644-e9663ecd4b12)|![정서영](https://avatars.githubusercontent.com/u/161271672?v=4)|![김태준](https://github.com/NBC-VIDEO/YouTube-API/assets/60022205/c0223644-88b6-40a6-8b32-68c72cc705a2)|
-|<div align=center>[@hyezg](https://github.com/hyezg)</div>|<div align=center>[@agvber](https://github.com/agvber)</div>|<div align=center>[@seoyoung19920921](https://github.com/seoyoung19920921)</div>|<div align=center>[@cococo35](https://github.com/cococo35/)</div>|
+<table border="1" width="10%">
+  <th align="center" colspan="4">5조</th>
+  <tr>
+     <td align="center"><a href="http://github.com/SWARVY"><img src="https://avatars.githubusercontent.com/u/112006114?v=4" width="80px;" style="vertical-align:top" alt=""/>
+
+   <td align="center"><a href="https://github.com/rheefine"><img src="https://avatars.githubusercontent.com/u/60022205?v=4" width="80px;" style="vertical-align:top" alt=""/>
+
+   <td align="center"><a href="https://github.com/h-beeen"><img src="https://avatars.githubusercontent.com/u/161271441?v=4" width="80px; style="vertical-align:top" alt=""/>
+
+   <td align="center"><a href="https://github.com/eunchannam"><img src="https://avatars.githubusercontent.com/u/161271672?v=4" width="80px;" style="vertical-align:top" alt=""/>
+
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/eofrkam"><b>장혜정</b></br></a></td>
+  <td align="center"><a href="https://github.com/rheefine"><b>김민준</b><br/></a></td>
+  <td align="center"><a href="https://github.com/h-beeen"><b>김태준</b></a></td>
+  <td align="center"><a href="https://github.com/eunchannam"><b>정서영</b></a></td>
+  </tr>
+    <tr>
+    <td align="center">home page</td>
+  <td align="center">my page</td>
+    <td align="center">detail page</td>
+	  <td align="center">search page</td>
+  </tr>
+</table>
 
 # 소개
     - 한 줄 정리 : 5조의 유튜브
     - 내용 : 검색과 영상 보관함 기능이 있는 앱
 
-# 프로젝트 핵심 기술
+## 프로젝트 핵심 기술
     - 유튜브 api를 활용하여 자신이 원하는 동영상을 검색할 수 있다
 
-# 사전 조사
+## 사전 조사
+
+<img src="https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/0b8acb66-5081-47a6-a6ea-45b0bbdd3d3f" width="80%">
+
+## 이미지 참고
+<img src="https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/f014c8da-4e82-4fd5-a681-9109bb1b9349" width="80%">
+
+## 와이어 프레임
+<img src="https://github.com/hyezg/aaa/assets/112006114/69180147-944e-41b1-a5cc-9a1e39a01a88" width="60%">
 
 
-![image](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/0b8acb66-5081-47a6-a6ea-45b0bbdd3d3f)
-
-
-# 이미지 참고
-
-
-![image](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/f014c8da-4e82-4fd5-a681-9109bb1b9349)
-
-# 와이어 프레임
-
-
-![image](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/991733d6-aa93-4d6b-a37f-b9e66c49d2b6)
-
-# 주요 구현 기능
-
+## 주요 구현 기능
 ### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
-
-
 [Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/9eb7472d-2b49-4669-9dda-25c2b6a2c9e9)
 
+
 ### 동영상 검색 : 입력한 텍스트로 API에 요청을 보내 동영상 리스트를 받아온다
-
-
 [Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/80b7c691-452d-43ac-85da-066000ab3827)
 
 ### 동영상 상세 정보 : 각 비디오 아이템 선택시 동영상 상세 정보를 제공한다
-
-
 [Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/2eccf7c7-03cf-47b7-b9c5-fdb408fcfac5)
 
 ### 동영상 저장 : 좋아요 버튼을 클릭하면 동영상이 보관함에 저장된다
-
-
-[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/40bc4b6c-f40c-4b0a-a70a-88096242753d)
+[Screen_recording_20240523_112833.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/112006114/333e60dd-62ca-4bf1-b7d3-356e86035a12)
