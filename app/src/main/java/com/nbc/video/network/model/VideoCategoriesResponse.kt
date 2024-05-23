@@ -6,11 +6,11 @@ data class VideoCategoriesResponse(
     @SerializedName("kind") val kind: String,
     @SerializedName("etag") val eTag: String,
     @SerializedName("id") val id: String,
-    @SerializedName("snippet") val snippet: Snippet
+    @SerializedName("snippet") val snippet: Snippet,
 ) {
     data class Snippet(
         @SerializedName("channelId") val channelId: String,
         @SerializedName("title") val title: String,
-        @SerializedName("assignable") val assignable: Boolean
+        @SerializedName("assignable") val assignable: Boolean,
     )
 }

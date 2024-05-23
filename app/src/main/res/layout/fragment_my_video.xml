@@ -4,67 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenters.my_video.MyVideoFragment">
+    tools:context=".presenters.my.MyVideoFragment">
+
+    <LinearLayout
+        android:background="@drawable/background_my_profile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_my_main"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/fragment_my_video_top_bar" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="58dp" />
+        app:layout_constraintGuide_begin="46dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_my_profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="24dp"
-        android:src="@drawable/img_my_video_test"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
-
-    <TextView
-        android:id="@+id/tv_my_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/fragment_my_profile_root"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="김민준"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/iv_my_profile"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_top">
 
-    <TextView
-        android:id="@+id/tv_my_introduction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="12dp"
-        android:breakStrategy="balanced"
-        android:ellipsize="end"
-        android:fontFamily="@font/roboto_regular"
-        android:maxLines="3"
-        android:text="Listen to “Little Foot Big Foot” feat. Young Nudy here - https://childishgambino.lnk.to/Atavista \n\nFollow Childish Gambino:\nInstagram: https://www.instagram.com/donaldglover/ \nX: https://twitter.com/donaldglover\nYouTube: https://www.youtube.com/@childishgambino/ \nFacebook: https://www.facebook.com/donaldglover/ \n\nCredits:\nDirector: Hiro Murai\nProducers: Jason Cole and Danielle Hinde\nProduction Company: Doomsday \nCo-Executive Producers: Chad Taylor and Fam Udeorji\nChoreographer: Shay Latukolan \nChoreo Asst: Lars Bohte\nProd Supervisor: Roland Berry \nProd Coor: Daniel Brink\nOffice PA: Giulia Alexander\n1st AD: Gavin Macleod\n2nd AD: Rick Randell\n2nd 2nd AD: Joey Neubauer\nDP: Larkin Seiple\nSteadicam: Brian Freesh\n1st AC: Matt Sanderson\n2nd AC: Jonathan Dec\nDIT: Earl Fulcher\nGaffer: Matt Ardine\nACLT: Stephanie Hauser\nSLT: Nick Perry\nSLT: Brad Ferm\nSLT: Nick Street\nHyphenate: Jack Shaw\nKey Grip: Justin Moran Duquette \nBest Boy Grip: Aaron Stinde\nDolly Grip” Connor Bordell\nGrip: Austin Johnson\nGrip: Fernando Nevarez\nHypenate: Abel Soto\nPD: Page Buckner\nAsst Art Director: Jenny Lass\nLead Person: Pablo Sanchez\nSet Decorator: Tamar Barnoon\nOn Set Decorator: Denver Stoddard \nSet Dresser: Carlos Canon\nSet Dresser: Noah Tavares\nSet Dresser: Sergip Arevalos \nSound Mixer: John Rampey\nVTR: Jarrod Butler\nLocation Mgr: Alex Dominguez\nCostume Designer: Mary Zophres \nCostumer: Kelly Porter\nAsst Costume Designer: Josh Quinn \nAsst Costume Designer: Adrian Lubanski \nLead Make Up: Michele Lewis\nMake Up Asst: Petrice Bankhead \nMakeup Asst: Deborah Humphries \nMake Up (CG): Autumn Moultrie\nMake Up Asst (CG): Dalia Younan \nLead Hairstylist: Andrea Mona Bowman \nHair Assist: Yvette Shelton\nHair Asst: Kamaaura Eley \nHairstylist (CG): Tiffany Daughtry \nGroomer: Janice Kinjo \nStunt Coordinator: Ryan Sturz\nClub Mgr: Quinta Brunson\nPipe 1 Dancer: Monyett Crump\nPipe 2 Dancer: Rob Bynes\nStunt Performer: Xavier Charles\nStunt Performer/ Man with gun: Eric Watson \nSmoking Man: Leopold Murphy\nThe Girl: Ezenwa IIabor\nBlues Guitarist: Oscar Jordan\nLaughing Man: Landry Barb\nDancer in the desert: Zonta Te\u0027Ahnna Wallace\nEdited at PARALLAX\nEdited by Luke Lynch\nAssistant Editor Victor Dos Santos \nExecutive Producer Graham Zeller\nPost Producer Eliza Moley\nSound Designer: Trevor Gates/ Formosa \nVFX by Monumental and Square VFX \nHead of Post Production: Laïla Hamdaoui\nPost Producer: Elisa Johanna Känd\nVFX Creative Directors: Mathieu Jussreandot, Colin Journée \nVFX Production Manager: Julie Delepine\nOn-set VFX Supervisor: Ben Kadie\nCG Generalists: Victor Dufayard, Laurent Basset\nMattepainting: Richard Gomard\nCompositing: Thomas Jouenne, Adrien “Palmito” Renay, Isabelle Tchoungang\nRoto: Sancio VFX\nColor: Alex Bickel\nManagement: Gilga/W+R, Myles Williams, Savannah Braswell, and Mariah Christian\n\n#ChildishGambino #Atavista #OfficialVideo"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_recyclerview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_my_profile"
-        app:layout_constraintTop_toBottomOf="@+id/tv_my_name" />
+        <include
+            android:id="@+id/layout_profile"
+            layout="@layout/fragment_my_profile" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="180dp" />
-
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_my_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_my_profile_root"
         tools:listitem="@layout/recyclerview_my_video_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

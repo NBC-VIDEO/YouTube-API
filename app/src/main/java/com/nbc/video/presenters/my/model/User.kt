@@ -1,4 +1,4 @@
-package com.nbc.video.presenters.my_video.model
+package com.nbc.video.presenters.my.model
 
 data class User(
     val name: String,

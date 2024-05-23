@@ -24,7 +24,7 @@
         android:background="@drawable/bg_my_datetime"
         android:fontFamily="@font/roboto_regular"
         android:text="1:14"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_my_thumb"
         app:layout_constraintEnd_toEndOf="@+id/iv_my_thumb" />

@@ -1,7 +1,7 @@
 package com.nbc.video.network.retrofit
 
 import androidx.annotation.IntRange
-import com.nbc.video.network.YOUTUBE_API_KEY
+import com.nbc.video.YOUTUBE_API_KEY
 import com.nbc.video.network.model.ChannelResponse
 import com.nbc.video.network.model.SearchResponse
 import com.nbc.video.network.model.VideoCategoriesResponse
