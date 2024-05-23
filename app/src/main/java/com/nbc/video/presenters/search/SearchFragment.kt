@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
 import com.nbc.video.databinding.FragmentSearchBinding
+import com.nbc.video.navigateToDetailPage
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.SearchResponse
 import com.nbc.video.network.model.search.enums.NetworkSearchType
@@ -68,7 +69,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        searchAdapter = SearchAdapter()
+        searchAdapter = SearchAdapter {
+            navigateToDetailPage(it.id)
+        }
         binding.rvSearch.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = searchAdapter
@@ -169,7 +172,8 @@ private fun List<SearchResponse>.toSearchItem(): List<Search.Item> {
         Search.Item(
             title = it.snippet.title,
             views = Random.nextLong(1000, 1000000), // 1000에서 1000000 사이의 랜덤 조회수
-            thumbnail = it.snippet.thumbnails["default"]?.url?:""
+            thumbnail = it.snippet.thumbnails["default"]?.url ?: "",
+            id = it.id.videoId ?: ""
         )
     }
 }
