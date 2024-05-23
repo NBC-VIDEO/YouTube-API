@@ -1,4 +1,4 @@
-package com.nbc.video.main
+package com.nbc.video.presenters.search
 
 import android.app.Activity
 import android.content.Context
@@ -19,7 +19,6 @@ import com.nbc.video.navigateToDetailPage
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.SearchResponse
 import com.nbc.video.network.model.search.enums.NetworkSearchType
-import com.nbc.video.presenters.search.SearchAdapter
 import com.nbc.video.presenters.search.model.Search
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
