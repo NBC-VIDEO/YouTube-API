@@ -44,17 +44,23 @@
 ## 와이어 프레임
 <img src="https://github.com/hyezg/aaa/assets/112006114/69180147-944e-41b1-a5cc-9a1e39a01a88" width="60%">
 
-
 ## 주요 구현 기능
-### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
-[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/9eb7472d-2b49-4669-9dda-25c2b6a2c9e9)
 
+[x]  효율적인 Fragment UI 관리
+[x]  Retrofit을 활용한 YouTube API 데이터 연동
+[x]  홈화면 (HomeFragment)
+[x]  비디오 검색 (SearchFragment)
+[x]  상세 정보 (VideoDetailFragment or VideoDetailAcitvity)
+[x]  마이 페이지 (MyVideoFragment)
+
+### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
+[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/497030a5-0e1b-4f59-b165-151bd7b6a82e)
 
 ### 동영상 검색 : 입력한 텍스트로 API에 요청을 보내 동영상 리스트를 받아온다
-[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/80b7c691-452d-43ac-85da-066000ab3827)
+[Screen_recording_20240523_112428.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/33daf443-a1dc-49b9-bfe9-519e05de426a)
 
 ### 동영상 상세 정보 : 각 비디오 아이템 선택시 동영상 상세 정보를 제공한다
-[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/2eccf7c7-03cf-47b7-b9c5-fdb408fcfac5)
+[Screen_recording_20240523_112639.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/5787b524-8e09-4076-9dcb-a60df6c08609)
 
 ### 동영상 저장 : 좋아요 버튼을 클릭하면 동영상이 보관함에 저장된다
 [Screen_recording_20240523_112833.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/112006114/333e60dd-62ca-4bf1-b7d3-356e86035a12)
