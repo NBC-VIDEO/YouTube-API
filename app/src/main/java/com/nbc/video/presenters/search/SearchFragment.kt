@@ -10,14 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
-import com.nbc.video.R
 import com.nbc.video.databinding.FragmentSearchBinding
+import com.nbc.video.navigateToDetailPage
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.SearchResponse
 import com.nbc.video.network.model.search.enums.NetworkSearchType
@@ -71,8 +69,7 @@ class SearchFragment : Fragment() {
 
     private fun setupRecyclerView() {
         searchAdapter = SearchAdapter {
-            val bundle = bundleOf("videoID" to it.id)
-            findNavController().navigate(R.id.videoDetailFragment, bundle)
+            navigateToDetailPage(it.id)
         }
         binding.rvSearch.apply {
             layoutManager = LinearLayoutManager(context)
@@ -117,7 +114,7 @@ class SearchFragment : Fragment() {
                         val response = network.searchVideos(
                             query = query, // 검색어
                             type = NetworkSearchType.VIDEO, // 서치 타입
-                            maxResults = 10 // 데이터 가져오려는 개수
+                            maxResults = 30 // 데이터 가져오려는 개수
                         )
 
                         withContext(Dispatchers.Main) {

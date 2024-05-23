@@ -3,19 +3,18 @@ package com.nbc.video.presenters.home
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nbc.video.AppApplication
 import com.nbc.video.R
 import com.nbc.video.databinding.FragmentHomeBinding
+import com.nbc.video.navigateToDetailPage
 import com.nbc.video.network.NetworkDataSource
 import com.nbc.video.network.model.search.enums.NetworkSearchType
 import com.nbc.video.presenters.home.model.CategoryVideo
@@ -42,7 +41,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -56,15 +55,13 @@ class HomeFragment : Fragment() {
         binding.rlPopular.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rlPopular.adapter = HomeAdapter<PopularVideo> {
-            val bundle = bundleOf("videoID" to it)
-            findNavController().navigate(R.id.videoDetailFragment, bundle)
+            navigateToDetailPage(it)
         }
 
         binding.rlCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rlCategory.adapter = HomeAdapter<CategoryVideo> {
-            val bundle = bundleOf("videoID" to it)
-            findNavController().navigate(R.id.videoDetailFragment, bundle)
+            navigateToDetailPage(it)
         }
 
         binding.rlChannel.layoutManager =
@@ -91,7 +88,7 @@ class HomeFragment : Fragment() {
                     //카테고리 선택했을 때
                     override fun onItemSelected(
                         parent: AdapterView<*>?, view: View?, position: Int,
-                        id: Long
+                        id: Long,
                     ) {
                         lifecycleScope.launch {
                             //2. 카테고리 관련 영상 리스트
