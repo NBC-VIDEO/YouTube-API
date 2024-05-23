@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.nbc.video.database.model.VideoDetailEntity
 import com.nbc.video.databinding.FragmentVideoDetailBinding
 import com.nbc.video.decimal
 import com.nbc.video.network.model.VideoResponse
@@ -47,10 +47,7 @@ class VideoDetailFragment : Fragment() {
                     viewModel.insertVideo(newVideo)
                     switchIsLiked(newVideo.channelId)
                 }
-        }
-
-        viewModel.getAllVideos().observe(viewLifecycleOwner) {
-            // 데이터 변경시 처리
+            Toast.makeText(requireContext(), "보관함에 저장되었습니다!", Toast.LENGTH_SHORT).show()
         }
 
         viewModel.videoDetailModelLiveData.observe(viewLifecycleOwner) { videoDetailsModel ->
@@ -78,7 +75,6 @@ class VideoDetailFragment : Fragment() {
             if (thumbnail != null) {
                 Glide.with(requireContext())
                     .load(thumbnail.url)
-                    .override(thumbnail.width, thumbnail.height)
                     .into(ivDetailThumbnail)
             }
             tvDetailTitle.text = videoDetailsModel.items.firstOrNull()?.snippet?.title

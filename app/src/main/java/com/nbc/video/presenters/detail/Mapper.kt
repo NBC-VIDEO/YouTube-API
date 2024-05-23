@@ -25,7 +25,7 @@ internal fun YouTubeResponse<VideoResponse>.asExterminalModel(channelResponse: C
                     description = items.snippet.description,
                     thumbnails = ThumbnailsModel(
                         default = ThumbnailModel(
-                            url = items.snippet.thumbnails["default"]?.url,
+                            url = items.snippet.thumbnails["high"]?.url,
                             width = 100,
                             height = 100,
                         )
