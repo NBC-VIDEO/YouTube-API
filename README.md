@@ -5,19 +5,15 @@
   <th align="center" colspan="4">5조</th>
   <tr>
      <td align="center"><a href="https://github.com/hyezg"><img src="https://avatars.githubusercontent.com/u/112006114?v=4" width="80px;" style="vertical-align:top" alt=""/>
-
    <td align="center"><a href="https://github.com/agvber"><img src="https://avatars.githubusercontent.com/u/60022205?v=4" width="80px;" style="vertical-align:top" alt=""/>
-
    <td align="center"><a href="https://github.com/cococo35"><img src="https://avatars.githubusercontent.com/u/161271441?v=4" width="80px; style="vertical-align:top" alt=""/>
-
    <td align="center"><a href="https://github.com/seoyoung19920921"><img src="https://avatars.githubusercontent.com/u/161271672?v=4" width="80px;" style="vertical-align:top" alt=""/>
-
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/eofrkam"><b>장혜정</b></br></a></td>
-  <td align="center"><a href="https://github.com/rheefine"><b>김민준</b><br/></a></td>
-  <td align="center"><a href="https://github.com/h-beeen"><b>김태준</b></a></td>
-  <td align="center"><a href="https://github.com/eunchannam"><b>정서영</b></a></td>
+    <td align="center"><a href="https://github.com/hyezg"><b>장혜정</b></br></a></td>
+  <td align="center"><a href="https://github.com/agvber"><b>김민준</b><br/></a></td>
+  <td align="center"><a href="https://github.com/cococo35"><b>김태준</b></a></td>
+  <td align="center"><a href="https://github.com/seoyoung19920921"><b>정서영</b></a></td>
   </tr>
     <tr>
     <td align="center">home page</td>
@@ -52,6 +48,7 @@
 - [x] 비디오 검색 (SearchFragment)
 - [x] 상세 정보 (VideoDetailFragment or VideoDetailAcitvity)
 - [x] 마이 페이지 (MyVideoFragment)
+<br>
 
 ### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
 [Screen_recording_20240523_151020.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/a1cdbd7f-2673-41ec-ba74-faa6f22d2b1a)
