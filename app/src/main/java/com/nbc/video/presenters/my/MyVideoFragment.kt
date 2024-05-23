@@ -1,4 +1,4 @@
-package com.nbc.video.presenters.my_video
+package com.nbc.video.presenters.my
 
 import android.os.Bundle
 import android.view.LayoutInflater

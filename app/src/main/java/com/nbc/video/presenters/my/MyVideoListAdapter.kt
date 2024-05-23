@@ -1,4 +1,4 @@
-package com.nbc.video.presenters.my_video
+package com.nbc.video.presenters.my
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nbc.video.databinding.RecyclerviewMyVideoItemBinding
-import com.nbc.video.presenters.my_video.model.MyVideo
+import com.nbc.video.presenters.my.model.MyVideo
 
 class MyVideoListAdapter(
     private val onItemClicked: (MyVideo) -> Unit

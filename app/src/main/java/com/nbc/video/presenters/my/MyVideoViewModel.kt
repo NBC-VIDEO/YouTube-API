@@ -1,4 +1,4 @@
-package com.nbc.video.presenters.my_video
+package com.nbc.video.presenters.my
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.nbc.video.database.VideoDetailDatabase
 import com.nbc.video.database.dao.VideoDetailDAO
 import com.nbc.video.database.model.VideoDetailEntity
-import com.nbc.video.presenters.my_video.model.MyVideo
+import com.nbc.video.presenters.my.model.MyVideo
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

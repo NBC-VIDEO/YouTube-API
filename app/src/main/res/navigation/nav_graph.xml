@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/myVideoFragment"
-        android:name="com.nbc.video.presenters.my_video.MyVideoFragment"
+        android:name="com.nbc.video.presenters.my.MyVideoFragment"
         app:route="my_video_route"
         tools:layout="@layout/fragment_my_video" />
 
