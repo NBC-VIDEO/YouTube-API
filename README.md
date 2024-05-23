@@ -10,7 +10,8 @@
 사전 조사
 
 
-    ![image](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/0ed95e6f-b949-4020-bd3d-521e491a6b6c)
+![image](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/0b8acb66-5081-47a6-a6ea-45b0bbdd3d3f)
+
 
 이미지 참고
 
