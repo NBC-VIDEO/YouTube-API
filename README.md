@@ -46,12 +46,12 @@
 
 ## 주요 구현 기능
 
-[x]  효율적인 Fragment UI 관리
-[x]  Retrofit을 활용한 YouTube API 데이터 연동
-[x]  홈화면 (HomeFragment)
-[x]  비디오 검색 (SearchFragment)
-[x]  상세 정보 (VideoDetailFragment or VideoDetailAcitvity)
-[x]  마이 페이지 (MyVideoFragment)
+- [x] 효율적인 Fragment UI 관리
+- [x] Retrofit을 활용한 YouTube API 데이터 연동
+- [x] 홈화면 (HomeFragment)
+- [x] 비디오 검색 (SearchFragment)
+- [x] 상세 정보 (VideoDetailFragment or VideoDetailAcitvity)
+- [x] 마이 페이지 (MyVideoFragment)
 
 ### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
 [Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/497030a5-0e1b-4f59-b165-151bd7b6a82e)
