@@ -54,13 +54,13 @@
 - [x] 마이 페이지 (MyVideoFragment)
 
 ### 카테고리 스피너 : spinner라이브러리를 사용해서 카테고리가 펼쳐진다
-[Screen_recording_20240523_112010.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/497030a5-0e1b-4f59-b165-151bd7b6a82e)
+[Screen_recording_20240523_151020.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/a1cdbd7f-2673-41ec-ba74-faa6f22d2b1a)
 
 ### 동영상 검색 : 입력한 텍스트로 API에 요청을 보내 동영상 리스트를 받아온다
-[Screen_recording_20240523_112428.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/33daf443-a1dc-49b9-bfe9-519e05de426a)
+[Screen_recording_20240523_150335.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/a15e2961-28c0-4677-a837-64c256cf18d0)
 
 ### 동영상 상세 정보 : 각 비디오 아이템 선택시 동영상 상세 정보를 제공한다
-[Screen_recording_20240523_112639.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/5787b524-8e09-4076-9dcb-a60df6c08609)
+[Screen_recording_20240523_150827.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/b58dc322-8a0a-4569-95d2-cfffd14c70a0)
 
 ### 동영상 저장 : 좋아요 버튼을 클릭하면 동영상이 보관함에 저장된다
-[Screen_recording_20240523_112833.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/112006114/333e60dd-62ca-4bf1-b7d3-356e86035a12)
+[Screen_recording_20240523_150904.webm](https://github.com/NBC-VIDEO/YouTube-API/assets/161271441/e9971a74-9081-4407-8b57-e093f5327f82)
